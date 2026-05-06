@@ -1,0 +1,3002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try VR Experience | Flashpoint Fire & Safety</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --fire-red: #ff3b3b;
+      --fire-orange: #ff6b35;
+      --deep-navy: #0a0e27;
+      --navy-light: #141b3d;
+      --accent-gold: #ffd700;
+      --vr-purple: #8b5cf6;
+      --vr-cyan: #06b6d4;
+      --mr-green: #10b981;
+      --white: #ffffff;
+      --gray-100: #f8fafc;
+      --gray-200: #e2e8f0;
+      --gray-600: #475569;
+      --gradient-fire: linear-gradient(135deg, #ff3b3b 0%, #ff6b35 100%);
+      --gradient-dark: linear-gradient(135deg, #0a0e27 0%, #141b3d 100%);
+      --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+      --gradient-vr: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+      --gradient-mr: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+      --shadow-glow: 0 0 40px rgba(255, 59, 59, 0.3);
+      --shadow-glow-strong: 0 0 60px rgba(255, 59, 59, 0.5);
+      --shadow-vr: 0 0 40px rgba(139, 92, 246, 0.4);
+      --shadow-mr: 0 0 40px rgba(16, 185, 129, 0.4);
+      --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-card-hover: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--deep-navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-fire);
+      border-radius: 6px;
+      border: 3px solid var(--deep-navy);
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+    }
+
+    .header.scrolled {
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 0.75rem 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(255, 59, 59, 0.1);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-icon {
+      width: 55px;
+      height: 55px;
+      background: var(--gradient-fire);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      animation: pulse-fire 3s infinite;
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 60%);
+      transform: rotate(30deg);
+    }
+
+    @keyframes pulse-fire {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 59, 59, 0.7);
+      }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: var(--gradient-fire);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-subtitle {
+      font-size: 0.8rem;
+      color: var(--fire-orange);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--gradient-fire);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover::before {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--fire-orange);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .emergency-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--gradient-fire);
+      padding: 0.85rem 1.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .emergency-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s;
+    }
+
+    .emergency-btn:hover::before {
+      left: 100%;
+    }
+
+    .emergency-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: var(--shadow-glow-strong);
+      background: linear-gradient(135deg, #ff2b2b 0%, #ff5b25 100%);
+    }
+
+    .emergency-btn i {
+      animation: pulse 1.5s infinite;
+      font-size: 1.1rem;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(90deg);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 120px;
+      padding-bottom: 4rem;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f4b 50%, #0a0e27 100%);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--gradient-vr);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(1px);
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      90% {
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(139, 92, 246, 0.15);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--vr-cyan);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      animation: badgeGlow 3s infinite;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    }
+
+    @keyframes badgeGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      }
+    }
+
+    .hero-badge i {
+      color: var(--vr-purple);
+      font-size: 1.1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .hero-title span {
+      background: var(--gradient-vr);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+      animation: textGlow 3s infinite;
+    }
+
+    @keyframes textGlow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+      }
+
+      50% {
+        text-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+      }
+    }
+
+    .hero-description {
+      font-size: 1.2rem;
+      color: var(--gray-200);
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--vr-purple);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      border: 2px solid rgba(139, 92, 246, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--white) 0%, var(--gray-200) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-subtitle {
+      color: var(--gray-200);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* Interactive Activities Section */
+    .interactive-section {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f4b 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interactive-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 59, 59, 0.1) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .activity-card {
+      background: rgba(20, 27, 61, 0.7);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 24px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(20px);
+      cursor: pointer;
+    }
+
+    .activity-card:nth-child(2) {
+      border-color: rgba(255, 59, 59, 0.3);
+    }
+
+    .activity-card:nth-child(3) {
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .activity-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      border-color: rgba(139, 92, 246, 0.8);
+      box-shadow: 0 30px 60px rgba(139, 92, 246, 0.3);
+    }
+
+    .activity-card:nth-child(2):hover {
+      border-color: rgba(255, 59, 59, 0.8);
+      box-shadow: 0 30px 60px rgba(255, 59, 59, 0.3);
+    }
+
+    .activity-card:nth-child(3):hover {
+      border-color: rgba(16, 185, 129, 0.8);
+      box-shadow: 0 30px 60px rgba(16, 185, 129, 0.3);
+    }
+
+    .activity-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      background: rgba(139, 92, 246, 0.2);
+      color: var(--vr-purple);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .activity-card:nth-child(2) .activity-badge {
+      background: rgba(255, 59, 59, 0.2);
+      color: var(--fire-orange);
+      border-color: rgba(255, 59, 59, 0.3);
+    }
+
+    .activity-card:nth-child(3) .activity-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--mr-green);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .activity-icon {
+      width: 90px;
+      height: 90px;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-vr);
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .activity-card:nth-child(2) .activity-icon {
+      background: var(--gradient-fire);
+      box-shadow: 0 0 40px rgba(255, 59, 59, 0.4);
+    }
+
+    .activity-card:nth-child(3) .activity-icon {
+      background: var(--gradient-mr);
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
+    }
+
+    .activity-icon::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 255, 255, 0.4) 0%,
+          rgba(255, 255, 255, 0) 60%);
+      transform: rotate(30deg);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) rotate(30deg);
+      }
+
+      100% {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+
+    .activity-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .activity-card p {
+      color: var(--gray-200);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .activity-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--gray-200);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .meta-tag i {
+      font-size: 0.9rem;
+    }
+
+    .activity-card:nth-child(1) .meta-tag i {
+      color: var(--vr-purple);
+    }
+
+    .activity-card:nth-child(2) .meta-tag i {
+      color: var(--fire-orange);
+    }
+
+    .activity-card:nth-child(3) .meta-tag i {
+      color: var(--mr-green);
+    }
+
+    .btn-launch {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.4s;
+      border: none;
+      cursor: pointer;
+      background: var(--gradient-vr);
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+    }
+
+    .activity-card:nth-child(2) .btn-launch {
+      background: var(--gradient-fire);
+      box-shadow: 0 10px 30px rgba(255, 59, 59, 0.3);
+    }
+
+    .activity-card:nth-child(3) .btn-launch {
+      background: var(--gradient-mr);
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-launch:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(139, 92, 246, 0.5);
+    }
+
+    .activity-card:nth-child(2) .btn-launch:hover {
+      box-shadow: 0 15px 40px rgba(255, 59, 59, 0.5);
+    }
+
+    .activity-card:nth-child(3) .btn-launch:hover {
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 14, 39, 0.95);
+      backdrop-filter: blur(20px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-container {
+      width: 90%;
+      max-width: 1200px;
+      height: 90vh;
+      background: rgba(20, 27, 61, 0.95);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.4s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 14, 39, 0.5);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .modal-title i {
+      color: var(--vr-purple);
+    }
+
+    .modal-close {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+      transform: rotate(90deg);
+    }
+
+    .modal-content {
+      flex: 1;
+      overflow: auto;
+      padding: 2rem;
+    }
+
+    /* Activity 1: Virtual Inspector */
+    .inspector-game {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 2rem;
+      height: 100%;
+    }
+
+    .scene-container {
+      background: linear-gradient(135deg, #1a1f4b 0%, #0a0e27 100%);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .room-scene {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background:
+        linear-gradient(180deg, #2d3748 0%, #1a202c 100%);
+      overflow: hidden;
+    }
+
+    .room-floor {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(180deg, #4a5568 0%, #2d3748 100%);
+      transform: perspective(500px) rotateX(60deg);
+      transform-origin: bottom;
+    }
+
+    .room-wall {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 60%;
+      background: linear-gradient(180deg, #718096 0%, #4a5568 100%);
+    }
+
+    .hazard-item {
+      position: absolute;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 2.5rem;
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+      z-index: 10;
+    }
+
+    .hazard-item:hover {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 20px rgba(255, 59, 59, 0.8));
+    }
+
+    .hazard-item.found {
+      animation: foundPulse 0.6s ease;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    @keyframes foundPulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.5);
+        filter: brightness(2);
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+    }
+
+    .inspector-panel {
+      background: rgba(10, 14, 39, 0.8);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .score-display {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(139, 92, 246, 0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+
+    .score-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--vr-purple);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .score-label {
+      font-size: 0.9rem;
+      color: var(--gray-200);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hazard-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hazard-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+
+    .hazard-list li.found {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--mr-green);
+    }
+
+    .hazard-list li i {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .hazard-list li.found i {
+      background: var(--mr-green);
+      color: var(--white);
+    }
+
+    .timer-display {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--fire-orange);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Activity 2: Fire Extinguisher Simulator */
+    .extinguisher-sim {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 2rem;
+    }
+
+    .sim-scene {
+      flex: 1;
+      background: linear-gradient(135deg, #2d1b1b 0%, #1a0f0f 100%);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid rgba(255, 59, 59, 0.3);
+      cursor: crosshair;
+    }
+
+    .fire-container {
+      position: absolute;
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+    }
+
+    .fire-flame {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at center bottom,
+          rgba(255, 100, 0, 0.9) 0%,
+          rgba(255, 50, 0, 0.7) 30%,
+          rgba(255, 0, 0, 0.4) 60%,
+          transparent 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flicker 0.1s infinite alternate;
+      filter: blur(5px);
+    }
+
+    @keyframes flicker {
+      0% {
+        transform: translateX(-50%) scale(1) rotate(-2deg);
+        opacity: 0.9;
+      }
+
+      100% {
+        transform: translateX(-50%) scale(1.1) rotate(2deg);
+        opacity: 1;
+      }
+    }
+
+    .fire-particle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #ff6b35 0%, #ff3b3b 100%);
+      border-radius: 50%;
+      animation: rise 2s infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translateY(-150px) scale(0.2);
+        opacity: 0;
+      }
+    }
+
+    .spray-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, #ffffff 0%, #a0c4ff 100%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: spray-fade 1s forwards;
+    }
+
+    @keyframes spray-fade {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .extinguisher-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .control-card {
+      background: rgba(10, 14, 39, 0.8);
+      border: 1px solid rgba(255, 59, 59, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .control-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--fire-orange);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .control-label {
+      font-size: 0.9rem;
+      color: var(--gray-200);
+      margin-top: 0.5rem;
+    }
+
+    .control-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      margin-top: 1rem;
+      overflow: hidden;
+    }
+
+    .control-fill {
+      height: 100%;
+      background: var(--gradient-fire);
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+
+    /* Activity 3: Evacuation Planner */
+    .evacuation-planner {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 2rem;
+      height: 100%;
+    }
+
+    .building-canvas {
+      background: linear-gradient(135deg, #1a1f4b 0%, #0a0e27 100%);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .floor-plan {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: 2rem;
+    }
+
+    .room {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--gray-200);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .room:hover {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.5);
+    }
+
+    .room.start-point {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--mr-green);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+
+    .room.exit-point {
+      background: rgba(255, 59, 59, 0.2);
+      border-color: var(--fire-red);
+      box-shadow: 0 0 20px rgba(255, 59, 59, 0.3);
+    }
+
+    .route-line {
+      position: absolute;
+      height: 4px;
+      background: var(--gradient-mr);
+      border-radius: 2px;
+      transform-origin: left center;
+      opacity: 0;
+      animation: drawLine 1s forwards;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+    }
+
+    @keyframes drawLine {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .planner-controls {
+      background: rgba(10, 14, 39, 0.8);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .tool-btn {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .tool-btn:hover {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.5);
+    }
+
+    .tool-btn.active {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--mr-green);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+
+    .route-stats {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .stat-name {
+      color: var(--gray-200);
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: var(--mr-green);
+    }
+
+    /* Demo CTA Section */
+    .demo-cta {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(255, 59, 59, 0.1) 50%, rgba(16, 185, 129, 0.1) 100%);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 20px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .demo-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .demo-cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-cta h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .demo-cta p {
+      color: var(--gray-200);
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+    }
+
+    .demo-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.1rem 2.75rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--gradient-fire);
+      color: var(--white);
+      box-shadow: 0 15px 40px rgba(255, 59, 59, 0.4);
+      border: 2px solid transparent;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: var(--shadow-glow-strong);
+      background: linear-gradient(135deg, #ff2b2b 0%, #ff5b25 100%);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--white);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-vr {
+      background: var(--gradient-vr);
+      color: var(--white);
+      box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+      border: 2px solid transparent;
+    }
+
+    .btn-vr:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: var(--shadow-vr);
+    }
+
+    .btn-mr {
+      background: var(--gradient-mr);
+      color: var(--white);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+      border: 2px solid transparent;
+    }
+
+    .btn-mr:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: var(--shadow-mr);
+    }
+
+    .btn-premium {
+      background: var(--gradient-gold);
+      color: var(--deep-navy);
+      box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-premium:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 25px 60px rgba(255, 215, 0, 0.5);
+    }
+
+    /* Features Section */
+    .features-section {
+      background: var(--navy-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .features-content h2 {
+      font-size: 3rem;
+      margin-bottom: 2.5rem;
+      background: linear-gradient(135deg, var(--white) 0%, var(--gray-200) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.5rem;
+      background: rgba(10, 14, 39, 0.3);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s;
+    }
+
+    .feature-item:hover {
+      transform: translateX(10px);
+      background: rgba(10, 14, 39, 0.5);
+      border-color: rgba(139, 92, 246, 0.2);
+    }
+
+    .feature-check {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-vr);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    .feature-text h4 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    .feature-text p {
+      color: var(--gray-200);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .features-visual {
+      position: relative;
+    }
+
+    .features-image {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      z-index: 1;
+      transition: transform 0.5s;
+    }
+
+    .features-visual:hover .features-image {
+      transform: scale(1.02);
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(10, 14, 39, 0.95);
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: var(--shadow-vr);
+      z-index: 2;
+      backdrop-filter: blur(20px);
+      animation: float-card 6s ease-in-out infinite;
+    }
+
+    .floating-card-1 {
+      top: -40px;
+      right: -40px;
+      animation-delay: 0.5s;
+    }
+
+    .floating-card-2 {
+      bottom: 40px;
+      left: -40px;
+      animation: float-card 6s ease-in-out infinite reverse;
+      animation-delay: 1s;
+    }
+
+    @keyframes float-card {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(5deg);
+      }
+    }
+
+    .floating-card .number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--vr-purple);
+      display: block;
+      text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+
+    .floating-card .label {
+      font-size: 0.9rem;
+      color: var(--gray-200);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--gradient-fire);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 0;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    .cta-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-title {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-description {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--fire-red);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border: 2px solid transparent;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--deep-navy);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 4rem 0 2rem;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-fire);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-description {
+      color: var(--gray-200);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+    }
+
+    .social-link:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+      transform: translateY(-5px) rotate(10deg);
+      box-shadow: 0 10px 30px rgba(255, 59, 59, 0.4);
+    }
+
+    .footer-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-link {
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+    }
+
+    .footer-link i {
+      color: var(--fire-orange);
+      transition: transform 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--fire-orange);
+      padding-left: 10px;
+    }
+
+    .footer-link:hover i {
+      transform: translateX(5px);
+      color: var(--fire-red);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-copyright {
+      color: var(--gray-600);
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-badges {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: var(--gray-200);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s;
+    }
+
+    .badge:hover {
+      background: rgba(255, 59, 59, 0.1);
+      border-color: var(--fire-orange);
+      transform: translateY(-3px);
+    }
+
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--deep-navy);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s, visibility 0.5s;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-fire {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-vr);
+      border-radius: 50%;
+      animation: loader-pulse 2s infinite;
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.6);
+      position: relative;
+    }
+
+    .loader-fire::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-vr);
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.7;
+    }
+
+    @keyframes loader-pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+
+    .loader-text {
+      color: var(--vr-purple);
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      animation: fadeInOut 2s infinite;
+    }
+
+    @keyframes fadeInOut {
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 3rem;
+      right: 3rem;
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-vr);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      box-shadow: var(--shadow-vr);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.6);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .inspector-game,
+      .evacuation-planner {
+        grid-template-columns: 1fr;
+      }
+
+      .inspector-panel,
+      .planner-controls {
+        order: -1;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+
+      .floating-card {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: rgba(10, 14, 39, 0.98);
+        backdrop-filter: blur(30px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 2px solid var(--vr-purple);
+        z-index: 999;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-link {
+        font-size: 1.3rem;
+        padding: 0.75rem 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        width: 200px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-link:hover {
+        background: rgba(139, 92, 246, 0.2);
+      }
+
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+
+      .back-to-top {
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+      }
+
+      .modal-container {
+        width: 95%;
+        height: 95vh;
+      }
+
+      .extinguisher-controls {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 50vh;
+        padding-top: 100px;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .activity-card {
+        padding: 2rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .back-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+
+      .demo-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .demo-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .logo-title {
+        font-size: 1.4rem;
+      }
+
+      .logo-subtitle {
+        font-size: 0.7rem;
+      }
+
+      .emergency-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .activity-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+
+      .modal-header {
+        padding: 1rem;
+      }
+
+      .modal-title {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-fire"></div>
+    <div class="loader-text">Loading VR Experience</div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Activity Modal -->
+  <div class="modal-overlay" id="activityModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">
+          <i class="fas fa-vr-cardboard"></i>
+          <span>Virtual Experience</span>
+        </h3>
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-content" id="modalContent">
+        <!-- Dynamic content loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-fire-alt"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">Flashpoint</span>
+            <span class="logo-subtitle">Fire & Safety</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about us.html" class="nav-link">About Us</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="try - vr.html" class="nav-link" style="color: var(--vr-purple);">Try VR/MR Free</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="tel:0506742100" class="emergency-btn">
+            <i class="fas fa-phone-alt"></i>
+            <span>050 674 2100</span>
+          </a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-vr-cardboard"></i>
+        <span>Free Interactive Experience</span>
+      </div>
+
+      <h1 class="hero-title">
+        Try Our <span>VR/MR</span><br>
+        Safety Simulations
+      </h1>
+
+      <p class="hero-description">
+        Experience cutting-edge fire safety training with our free interactive simulations. No headset required - works
+        on any device! Test your skills and see the value before booking a premium demo.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive VR/MR Activities Section -->
+  <section class="section interactive-section" id="try-vr">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Open Source Experience</span>
+        <h2 class="section-title">Choose Your Experience</h2>
+        <p class="section-subtitle">Select from three interactive simulations designed to teach essential fire safety
+          skills through immersive technology.</p>
+      </div>
+
+      <div class="activities-grid">
+        <!-- Activity 1: Virtual Inspector -->
+        <div class="activity-card" data-activity="inspector">
+          <span class="activity-badge">VR Simulation</span>
+          <div class="activity-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Virtual Fire Inspector</h3>
+          <p>Step into a virtual office environment and identify fire hazards before time runs out. Learn to spot risks
+            like blocked exits, faulty wiring, and improper storage.</p>
+
+          <div class="activity-meta">
+            <span class="meta-tag"><i class="fas fa-clock"></i> 3 min</span>
+            <span class="meta-tag"><i class="fas fa-trophy"></i> Score Based</span>
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Educational</span>
+          </div>
+
+          <button class="btn-launch" onclick="launchActivity('inspector')">
+            <i class="fas fa-play"></i>
+            <span>Launch Experience</span>
+          </button>
+        </div>
+
+        <!-- Activity 2: Fire Extinguisher Simulator -->
+        <div class="activity-card" data-activity="extinguisher">
+          <span class="activity-badge">MR Training</span>
+          <div class="activity-icon">
+            <i class="fas fa-fire-extinguisher"></i>
+          </div>
+          <h3>Fire Extinguisher Trainer</h3>
+          <p>Master the PASS technique (Pull, Aim, Squeeze, Sweep) in this realistic simulation. Practice putting out
+            different classes of fires safely and effectively.</p>
+
+          <div class="activity-meta">
+            <span class="meta-tag"><i class="fas fa-hand-pointer"></i> Interactive</span>
+            <span class="meta-tag"><i class="fas fa-fire"></i> Real Physics</span>
+            <span class="meta-tag"><i class="fas fa-certificate"></i> Skill Training</span>
+          </div>
+
+          <button class="btn-launch" onclick="launchActivity('extinguisher')">
+            <i class="fas fa-play"></i>
+            <span>Start Training</span>
+          </button>
+        </div>
+
+        <!-- Activity 3: Evacuation Planner -->
+        <div class="activity-card" data-activity="evacuation">
+          <span class="activity-badge">MR Planning</span>
+          <div class="activity-icon">
+            <i class="fas fa-route"></i>
+          </div>
+          <h3>Emergency Route Planner</h3>
+          <p>Design and test evacuation routes for your building. Place exits, calculate travel times, and ensure
+            compliance with safety regulations in this 2D/3D hybrid tool.</p>
+
+          <div class="activity-meta">
+            <span class="meta-tag"><i class="fas fa-drafting-compass"></i> Design Tool</span>
+            <span class="meta-tag"><i class="fas fa-calculator"></i> Auto-Calculate</span>
+            <span class="meta-tag"><i class="fas fa-building"></i> Any Building</span>
+          </div>
+
+          <button class="btn-launch" onclick="launchActivity('evacuation')">
+            <i class="fas fa-play"></i>
+            <span>Plan Routes</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Demo CTA -->
+      <div class="demo-cta">
+        <div class="demo-cta-content">
+          <h3>Ready for the Full Experience?</h3>
+          <p>These open-source activities give you a taste of our technology. Upgrade to a premium demo to experience
+            full VR immersion with Meta Quest, HTC Vive, or HoloLens integration, featuring photorealistic environments
+            and advanced haptic feedback.</p>
+          <div class="demo-buttons">
+            <a href="premium vr experience.html" class="btn btn-premium">
+              <i class="fas fa-crown"></i>
+              <span>Book Premium VR Demo</span>
+            </a>
+            <a href="contact.html" class="btn btn-secondary">
+              <i class="fas fa-info-circle"></i>
+              <span>Contact us About VR/MR</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="features-grid">
+        <div class="features-content">
+          <span class="section-label">Why VR/MR Training?</span>
+          <h2>The Future of Fire Safety Education</h2>
+          <p style="color: var(--gray-200); margin-bottom: 3rem; font-size: 1.2rem; line-height: 1.8;">
+            Virtual and Mixed Reality technologies are revolutionizing how we train for emergency situations. Experience
+            realistic scenarios without real-world risks.
+          </p>
+
+          <ul class="features-list">
+            <li class="feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Safe Practice Environment</h4>
+                <p>Learn critical fire safety skills in realistic simulations without any danger of real fires or
+                  injuries.</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Cost Effective</h4>
+                <p>Reduce training costs by eliminating the need for physical equipment, dedicated training spaces, and
+                  downtime.</p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Better Retention</h4>
+                <p>Studies show VR training improves knowledge retention by up to 75% compared to traditional methods.
+                </p>
+              </div>
+            </li>
+            <li class="feature-item">
+              <div class="feature-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="feature-text">
+                <h4>Scalable & Accessible</h4>
+                <p>Train multiple employees simultaneously across different locations with consistent, standardized
+                  content.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="features-visual">
+          <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&auto=format&fit=crop"
+            alt="VR Training" class="features-image">
+
+          <div class="floating-card floating-card-1">
+            <div class="number">75%</div>
+            <div class="label">Better Retention</div>
+          </div>
+
+          <div class="floating-card floating-card-2">
+            <div class="number">4x</div>
+            <div class="label">Faster Training</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Upgrade Your Training?</h2>
+        <p class="cta-description">Contact us today to schedule a premium VR/MR demonstration for your organization.
+          Experience the full potential of immersive fire safety training.</p>
+        <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+          <a href="tel:0506742100" class="btn btn-white">
+            <i class="fas fa-phone-alt"></i>
+            <span>Call Now: 050 674 2100</span>
+          </a>
+          <a href="mailto:info@flashpoint.ae" class="btn btn-secondary">
+            <i class="fas fa-envelope"></i>
+            <span>Send Email</span>
+          </a>
+          <a href="https://wa.me/971506742100" class="btn btn-secondary" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp Chat</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-fire-alt"></i>
+            </div>
+            <div class="logo-text">
+              <span class="logo-title">Flashpoint</span>
+              <span class="logo-subtitle">Fire & Safety</span>
+            </div>
+          </a>
+          <p class="footer-description">
+            Leading fire protection specialists in Umm Al Quwain, UAE. Providing certified installation, maintenance,
+            emergency services, and immersive VR/MR safety solutions for commercial and residential properties.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/971506742100" class="social-link" aria-label="WhatsApp" target="_blank"><i
+                class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="about us.html" class="footer-link"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="try-vr.html" class="footer-link"><i class="fas fa-chevron-right"></i> Free VR Experience</a>
+            </li>
+            <li><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Our Services</h4>
+          <ul class="footer-links">
+            <li> <i class="fas fa-chevron-right"></i> Fire Alarm Systems</a></li>
+            <li> <i class="fas fa-chevron-right"></i> Sprinkler Systems</a></li>
+            <li> <i class="fas fa-chevron-right"></i> Free VR Training</a></li>
+            <li> <i class="fas fa-chevron-right"></i> Premium VR/MR</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact Info</h4>
+          <ul class="footer-links">
+            <li><a href="tel:0506742100" class="footer-link"><i class="fas fa-phone"></i> 050 674 2100</a></li>
+            <li><a href="mailto:info@flashpoint.ae" class="footer-link"><i class="fas fa-envelope"></i>
+                info@flashpoint.ae</a></li>
+            <li><span class="footer-link"><i class="fas fa-map-marker-alt"></i> Umm Al Quwain, UAE</span></li>
+            <li><span class="footer-link"><i class="fas fa-clock"></i> 24/7 Emergency Service</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2025 Flashpoint Fire and Safety. All rights reserved. | Designed with <i
+            class="fas fa-heart" style="color: var(--fire-red);"></i> for your safety</p>
+        <div class="footer-badges">
+          <span class="badge"><i class="fas fa-vr-cardboard"></i> VR Ready</span>
+          <span class="badge"><i class="fas fa-cube"></i> MR Compatible</span>
+          <span class="badge"><i class="fas fa-shield-alt"></i> ISO 9001 Certified</span>
+          <span class="badge"><i class="fas fa-check-circle"></i> Civil Defense Approved</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }, 800);
+    });
+
+    // Header scroll effect
+    const header = document.getElementById('header');
+    const updateHeader = () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.innerHTML = navMenu.classList.contains('active') ?
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+      menuToggle.setAttribute('aria-expanded', navMenu.classList.contains('active'));
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Enhanced particle animation
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = window.innerWidth < 768 ? 30 : 60;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.width = Math.random() * 6 + 2 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = (15 + Math.random() * 15) + 's';
+      particle.style.opacity = Math.random() * 0.5 + 0.3;
+      particle.style.background = Math.random() > 0.5 ?
+        'var(--gradient-vr)' :
+        'linear-gradient(135deg, var(--vr-cyan) 0%, var(--vr-purple) 100%)';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const target = document.querySelector(targetId);
+        if (target) {
+          const headerHeight = header.offsetHeight;
+          const targetPosition = target.offsetTop - headerHeight - 20;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Enhanced reveal animations on scroll
+    const revealElements = document.querySelectorAll('.activity-card, .feature-item');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0) scale(1)';
+          entry.target.style.filter = 'blur(0)';
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    revealElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(50px) scale(0.95)';
+      el.style.filter = 'blur(10px)';
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease';
+      revealObserver.observe(el);
+    });
+
+    // Add keyboard navigation support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+
+    // Activity Modal Functions
+    const modal = document.getElementById('activityModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalContent = document.getElementById('modalContent');
+    const modalClose = document.getElementById('modalClose');
+
+    let currentActivity = null;
+    let gameInterval = null;
+    let particleInterval = null;
+
+    function launchActivity(type) {
+      currentActivity = type;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      switch (type) {
+        case 'inspector':
+          loadInspectorGame();
+          break;
+        case 'extinguisher':
+          loadExtinguisherSim();
+          break;
+        case 'evacuation':
+          loadEvacuationPlanner();
+          break;
+      }
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      if (gameInterval) {
+        clearInterval(gameInterval);
+        gameInterval = null;
+      }
+      if (particleInterval) {
+        clearInterval(particleInterval);
+        particleInterval = null;
+      }
+      currentActivity = null;
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Activity 1: Virtual Inspector Game
+    function loadInspectorGame() {
+      modalTitle.innerHTML = '<i class="fas fa-search"></i><span>Virtual Fire Inspector</span>';
+
+      const hazards = [
+        { icon: '🔌', name: 'Overloaded Outlet', x: 20, y: 30, found: false },
+        { icon: '🚪', name: 'Blocked Exit', x: 70, y: 60, found: false },
+        { icon: '🛢️', name: 'Flammable Storage', x: 80, y: 25, found: false },
+        { icon: '🚭', name: 'No Smoking Sign Missing', x: 30, y: 70, found: false },
+        { icon: '🔥', name: 'Open Flame', x: 50, y: 40, found: false },
+        { icon: '📦', name: 'Cluttered Corridor', x: 15, y: 80, found: false }
+      ];
+
+      let score = 0;
+      let timeLeft = 60;
+      let gameActive = true;
+
+      modalContent.innerHTML = `
+        <div class="inspector-game">
+          <div class="scene-container">
+            <div class="room-scene" id="inspectorScene">
+              <div class="room-wall"></div>
+              <div class="room-floor"></div>
+              ${hazards.map((h, i) => `
+                <div class="hazard-item" data-index="${i}" style="left: ${h.x}%; top: ${h.y}%;">
+                  ${h.icon}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="inspector-panel">
+            <div class="timer-display" id="timerDisplay">01:00</div>
+            <div class="score-display">
+              <div class="score-number" id="scoreDisplay">0</div>
+              <div class="score-label">Hazards Found</div>
+            </div>
+            <ul class="hazard-list" id="hazardList">
+              ${hazards.map(h => `
+                <li id="hazard-${h.name.replace(/\s+/g, '-')}">
+                  <i class="fas fa-search"></i>
+                  <span>${h.name}</span>
+                </li>
+              `).join('')}
+            </ul>
+            <button class="btn btn-vr" onclick="resetInspector()" style="width: 100%;">
+              <i class="fas fa-redo"></i> Restart
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Timer
+      gameInterval = setInterval(() => {
+        if (!gameActive) return;
+        timeLeft--;
+        const mins = Math.floor(timeLeft / 60);
+        const secs = timeLeft % 60;
+        document.getElementById('timerDisplay').textContent =
+          `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+          gameActive = false;
+          clearInterval(gameInterval);
+          alert(`Time's up! You found ${score} out of ${hazards.length} hazards.`);
+        }
+      }, 1000);
+
+      // Click handlers
+      document.querySelectorAll('.hazard-item').forEach(item => {
+        item.addEventListener('click', function () {
+          if (!gameActive) return;
+          const index = parseInt(this.dataset.index);
+          if (!hazards[index].found) {
+            hazards[index].found = true;
+            this.classList.add('found');
+            score++;
+            document.getElementById('scoreDisplay').textContent = score;
+
+            const listItem = document.getElementById(`hazard-${hazards[index].name.replace(/\s+/g, '-')}`);
+            if (listItem) {
+              listItem.classList.add('found');
+              listItem.querySelector('i').className = 'fas fa-check';
+            }
+
+            if (score === hazards.length) {
+              gameActive = false;
+              clearInterval(gameInterval);
+              setTimeout(() => {
+                alert('Congratulations! You found all hazards! 🎉');
+              }, 500);
+            }
+          }
+        });
+      });
+    }
+
+    function resetInspector() {
+      closeModal();
+      setTimeout(() => launchActivity('inspector'), 300);
+    }
+
+    // Activity 2: Fire Extinguisher Simulator
+    function loadExtinguisherSim() {
+      modalTitle.innerHTML = '<i class="fas fa-fire-extinguisher"></i><span>Fire Extinguisher Trainer</span>';
+
+      let fireSize = 100;
+      let sprayCount = 0;
+      let isSpraying = false;
+
+      modalContent.innerHTML = `
+        <div class="extinguisher-sim">
+          <div class="sim-scene" id="fireScene">
+            <div class="fire-container" id="fireContainer">
+              <div class="fire-flame" id="fireFlame"></div>
+            </div>
+          </div>
+          <div class="extinguisher-controls">
+            <div class="control-card">
+              <div class="control-value" id="fireSizeDisplay">100%</div>
+              <div class="control-label">Fire Intensity</div>
+              <div class="control-bar">
+                <div class="control-fill" id="fireBar" style="width: 100%;"></div>
+              </div>
+            </div>
+            <div class="control-card">
+              <div class="control-value" id="sprayDisplay">0</div>
+              <div class="control-label">Spray Count</div>
+              <div class="control-bar">
+                <div class="control-fill" id="sprayBar" style="width: 0%; background: var(--gradient-mr);"></div>
+              </div>
+            </div>
+            <div class="control-card">
+              <div class="control-value" id="statusDisplay">🔥</div>
+              <div class="control-label">Status</div>
+              <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--gray-200);">
+                Click & hold on fire to spray
+              </div>
+            </div>
+          </div>
+          <div style="text-align: center; padding: 1rem; background: rgba(255,59,59,0.1); border-radius: 12px; border: 1px solid rgba(255,59,59,0.2);">
+            <p style="color: var(--gray-200); font-size: 0.95rem;">
+              <strong style="color: var(--fire-orange);">Tip:</strong> Use the PASS technique - Pull the pin, Aim at the base, Squeeze the handle, Sweep side to side
+            </p>
+          </div>
+        </div>
+      `;
+
+      const fireScene = document.getElementById('fireScene');
+      const fireFlame = document.getElementById('fireFlame');
+      const fireContainer = document.getElementById('fireContainer');
+
+      // Create fire particles
+      function createFireParticle() {
+        if (fireSize <= 0) return;
+        const particle = document.createElement('div');
+        particle.className = 'fire-particle';
+        particle.style.left = Math.random() * 80 + 10 + '%';
+        particle.style.bottom = Math.random() * 50 + '%';
+        particle.style.animationDelay = Math.random() * 2 + 's';
+        fireContainer.appendChild(particle);
+        setTimeout(() => particle.remove(), 2000);
+      }
+
+      particleInterval = setInterval(createFireParticle, 300);
+
+      // Spray functionality
+      fireScene.addEventListener('mousedown', (e) => {
+        isSpraying = true;
+        spray(e);
+      });
+
+      fireScene.addEventListener('mouseup', () => isSpraying = false);
+      fireScene.addEventListener('mouseleave', () => isSpraying = false);
+      fireScene.addEventListener('mousemove', (e) => {
+        if (isSpraying) spray(e);
+      });
+
+      // Touch support
+      fireScene.addEventListener('touchstart', (e) => {
+        isSpraying = true;
+        spray(e.touches[0]);
+      });
+      fireScene.addEventListener('touchend', () => isSpraying = false);
+      fireScene.addEventListener('touchmove', (e) => {
+        if (isSpraying) {
+          e.preventDefault();
+          spray(e.touches[0]);
+        }
+      });
+
+      function spray(e) {
+        if (fireSize <= 0) return;
+
+        const rect = fireScene.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Create spray particle
+        const spray = document.createElement('div');
+        spray.className = 'spray-particle';
+        spray.style.left = x + 'px';
+        spray.style.top = y + 'px';
+        fireScene.appendChild(spray);
+        setTimeout(() => spray.remove(), 1000);
+
+        // Check if hitting fire
+        const fireRect = fireContainer.getBoundingClientRect();
+        const relativeX = e.clientX - fireRect.left;
+        const relativeY = e.clientY - fireRect.top;
+
+        if (relativeX > 0 && relativeX < fireRect.width &&
+          relativeY > 0 && relativeY < fireRect.height) {
+          fireSize = Math.max(0, fireSize - 2);
+          sprayCount++;
+          updateDisplay();
+        }
+      }
+
+      function updateDisplay() {
+        document.getElementById('fireSizeDisplay').textContent = Math.round(fireSize) + '%';
+        document.getElementById('fireBar').style.width = fireSize + '%';
+        document.getElementById('sprayDisplay').textContent = sprayCount;
+        document.getElementById('sprayBar').style.width = Math.min(100, sprayCount / 10) + '%';
+
+        fireFlame.style.transform = `translateX(-50%) scale(${fireSize / 100})`;
+        fireFlame.style.opacity = fireSize / 100;
+
+        if (fireSize <= 0) {
+          document.getElementById('statusDisplay').textContent = '✅';
+          document.getElementById('statusDisplay').style.color = 'var(--mr-green)';
+          clearInterval(particleInterval);
+          particleInterval = null;
+          setTimeout(() => {
+            alert('Excellent! You extinguished the fire! 🎉');
+          }, 500);
+        }
+      }
+    }
+
+    // Activity 3: Evacuation Planner
+    function loadEvacuationPlanner() {
+      modalTitle.innerHTML = '<i class="fas fa-route"></i><span>Emergency Route Planner</span>';
+
+      let selectedTool = null;
+      let startRoom = null;
+      let exitRoom = null;
+
+      modalContent.innerHTML = `
+        <div class="evacuation-planner">
+          <div class="building-canvas">
+            <div class="floor-plan" id="floorPlan">
+              <div style="position: absolute; top: 10%; left: 10%; width: 30%; height: 25%;" class="room" data-room="office1">Office 1</div>
+              <div style="position: absolute; top: 10%; left: 45%; width: 30%; height: 25%;" class="room" data-room="office2">Office 2</div>
+              <div style="position: absolute; top: 40%; left: 10%; width: 30%; height: 25%;" class="room" data-room="meeting">Meeting Room</div>
+              <div style="position: absolute; top: 40%; left: 45%; width: 30%; height: 25%;" class="room" data-room="kitchen">Kitchen</div>
+              <div style="position: absolute; top: 70%; left: 10%; width: 65%; height: 20%;" class="room" data-room="lobby">Main Lobby</div>
+            </div>
+          </div>
+          <div class="planner-controls">
+            <h4 style="margin-bottom: 1rem; color: var(--white);">Tools</h4>
+            <button class="tool-btn" data-tool="start" onclick="selectTool('start')">
+              <i class="fas fa-play-circle" style="color: var(--mr-green);"></i>
+              <span>Set Start Point</span>
+            </button>
+            <button class="tool-btn" data-tool="exit" onclick="selectTool('exit')">
+              <i class="fas fa-door-open" style="color: var(--fire-red);"></i>
+              <span>Set Emergency Exit</span>
+            </button>
+            <button class="tool-btn" data-tool="route" onclick="selectTool('route')">
+              <i class="fas fa-route" style="color: var(--vr-purple);"></i>
+              <span>Draw Escape Route</span>
+            </button>
+            <button class="tool-btn" onclick="clearPlan()">
+              <i class="fas fa-trash" style="color: var(--gray-200);"></i>
+              <span>Clear All</span>
+            </button>
+            
+            <div class="route-stats" id="routeStats" style="margin-top: 2rem; opacity: 0.5;">
+              <h4 style="margin-bottom: 1rem; color: var(--white);">Route Analysis</h4>
+              <div class="stat-row">
+                <span class="stat-name">Distance</span>
+                <span class="stat-value" id="statDistance">-- m</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-name">Est. Time</span>
+                <span class="stat-value" id="statTime">-- sec</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-name">Compliance</span>
+                <span class="stat-value" id="statCompliance">--</span>
+              </div>
+            </div>
+
+            <button class="btn btn-mr" onclick="analyzeRoutes()" style="width: 100%; margin-top: 1rem;">
+              <i class="fas fa-calculator"></i> Analyze Routes
+            </button>
+          </div>
+        </div>
+      `;
+
+      // Tool selection
+      window.selectTool = function (tool) {
+        selectedTool = tool;
+        document.querySelectorAll('.tool-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.tool === tool) btn.classList.add('active');
+        });
+      };
+
+      // Room click handlers
+      document.querySelectorAll('.room').forEach(room => {
+        room.addEventListener('click', function () {
+          if (!selectedTool) return;
+
+          if (selectedTool === 'start') {
+            document.querySelectorAll('.room').forEach(r => r.classList.remove('start-point'));
+            this.classList.add('start-point');
+            startRoom = this.dataset.room;
+          } else if (selectedTool === 'exit') {
+            document.querySelectorAll('.room').forEach(r => r.classList.remove('exit-point'));
+            this.classList.add('exit-point');
+            exitRoom = this.dataset.room;
+          }
+        });
+      });
+
+      // Route drawing (simplified)
+      const floorPlan = document.getElementById('floorPlan');
+      let currentRoute = [];
+
+      floorPlan.addEventListener('click', (e) => {
+        if (selectedTool !== 'route') return;
+
+        const rect = floorPlan.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+        const point = document.createElement('div');
+        point.style.cssText = `
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          background: var(--vr-purple);
+          border-radius: 50%;
+          left: ${x}%;
+          top: ${y}%;
+          transform: translate(-50%, -50%);
+          box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+          z-index: 100;
+        `;
+        floorPlan.appendChild(point);
+
+        currentRoute.push({ x, y });
+
+        if (currentRoute.length > 1) {
+          const last = currentRoute[currentRoute.length - 2];
+          const line = document.createElement('div');
+          line.className = 'route-line';
+          const dx = x - last.x;
+          const dy = y - last.y;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+          line.style.cssText = `
+            left: ${last.x}%;
+            top: ${last.y}%;
+            width: ${length}%;
+            transform: rotate(${angle}deg);
+          `;
+          floorPlan.appendChild(line);
+        }
+      });
+
+      window.clearPlan = function () {
+        document.querySelectorAll('.room').forEach(r => {
+          r.classList.remove('start-point', 'exit-point');
+        });
+        document.querySelectorAll('.route-line').forEach(l => l.remove());
+        document.querySelectorAll('.floor-plan > div:not(.room)').forEach(d => d.remove());
+        startRoom = null;
+        exitRoom = null;
+        currentRoute = [];
+        document.getElementById('routeStats').style.opacity = '0.5';
+      };
+
+      window.analyzeRoutes = function () {
+        if (!startRoom || !exitRoom) {
+          alert('Please set both a start point and an emergency exit first!');
+          return;
+        }
+
+        const distance = Math.floor(Math.random() * 50 + 20);
+        const time = Math.floor(distance / 1.2);
+        const compliance = distance < 45 ? '✅ Compliant' : '⚠️ Review Needed';
+
+        document.getElementById('statDistance').textContent = distance + ' m';
+        document.getElementById('statTime').textContent = time + ' sec';
+        document.getElementById('statCompliance').textContent = compliance;
+        document.getElementById('routeStats').style.opacity = '1';
+      };
+    }
+
+    // Activity card hover effects
+    document.querySelectorAll('.activity-card').forEach(card => {
+      card.addEventListener('mouseenter', function () {
+        this.style.transform = 'translateY(-15px) scale(1.03)';
+      });
+
+      card.addEventListener('mouseleave', function () {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+
+    // Preload critical images
+    const preloadImages = [
+      'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?w=800&auto=format&fit=crop'
+    ];
+
+    preloadImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  </script>
+</body>
+
+</html>

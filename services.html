@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Flashpoint Fire & Safety</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --fire-red: #ff3b3b;
+      --fire-orange: #ff6b35;
+      --deep-navy: #0a0e27;
+      --navy-light: #141b3d;
+      --accent-gold: #ffd700;
+      --white: #ffffff;
+      --gray-100: #f8fafc;
+      --gray-200: #e2e8f0;
+      --gray-600: #475569;
+      --gradient-fire: linear-gradient(135deg, #ff3b3b 0%, #ff6b35 100%);
+      --gradient-dark: linear-gradient(135deg, #0a0e27 0%, #141b3d 100%);
+      --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+      --shadow-glow: 0 0 40px rgba(255, 59, 59, 0.3);
+      --shadow-glow-strong: 0 0 60px rgba(255, 59, 59, 0.5);
+      --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-card-hover: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--deep-navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-fire);
+      border-radius: 6px;
+      border: 3px solid var(--deep-navy);
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: transparent;
+    }
+
+    .header.scrolled {
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(20px);
+      padding: 0.75rem 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(255, 59, 59, 0.1);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-icon {
+      width: 55px;
+      height: 55px;
+      background: var(--gradient-fire);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      animation: pulse-fire 3s infinite;
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 255, 255, 0.3) 0%,
+          rgba(255, 255, 255, 0) 60%);
+      transform: rotate(30deg);
+    }
+
+    @keyframes pulse-fire {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 59, 59, 0.7);
+      }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: var(--gradient-fire);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-subtitle {
+      font-size: 0.8rem;
+      color: var(--fire-orange);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--gradient-fire);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover::before,
+    .nav-link.active::before {
+      width: 100%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--fire-orange);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .emergency-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--gradient-fire);
+      padding: 0.85rem 1.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 600;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .emergency-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.7s;
+    }
+
+    .emergency-btn:hover::before {
+      left: 100%;
+    }
+
+    .emergency-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: var(--shadow-glow-strong);
+      background: linear-gradient(135deg, #ff2b2b 0%, #ff5b25 100%);
+    }
+
+    .emergency-btn i {
+      animation: pulse 1.5s infinite;
+      font-size: 1.1rem;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(90deg);
+    }
+
+    /* Page Hero Section */
+    .page-hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 120px;
+      padding-bottom: 4rem;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-dark);
+      z-index: -2;
+    }
+
+    .page-hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(255, 59, 59, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .hero-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--gradient-fire);
+      border-radius: 50%;
+      opacity: 0;
+      filter: blur(1px);
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.7;
+      }
+
+      90% {
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    .page-hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+      padding: 0 2rem;
+    }
+
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 59, 59, 0.15);
+      border: 2px solid rgba(255, 59, 59, 0.3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--fire-orange);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      animation: badgeGlow 3s infinite;
+      box-shadow: 0 0 20px rgba(255, 59, 59, 0.2);
+    }
+
+    @keyframes badgeGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(255, 59, 59, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 30px rgba(255, 59, 59, 0.4);
+      }
+    }
+
+    .page-hero-badge i {
+      color: var(--fire-red);
+      font-size: 1.1rem;
+    }
+
+    .page-hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .page-hero-title span {
+      background: var(--gradient-fire);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+      animation: textGlow 3s infinite;
+    }
+
+    @keyframes textGlow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 20px rgba(255, 59, 59, 0.3);
+      }
+
+      50% {
+        text-shadow: 0 0 40px rgba(255, 59, 59, 0.6);
+      }
+    }
+
+    .page-hero-description {
+      font-size: 1.25rem;
+      color: var(--gray-200);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 8rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 5rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: rgba(255, 59, 59, 0.1);
+      color: var(--fire-orange);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      border: 2px solid rgba(255, 59, 59, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--white) 0%, var(--gray-200) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      color: var(--gray-200);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* Services Grid */
+    .services-section {
+      background: var(--navy-light);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 59, 59, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .service-card {
+      background: rgba(20, 27, 61, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-fire);
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: 0;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      border-color: rgba(255, 59, 59, 0.4);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .service-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .service-image-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .service-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .service-card:hover .service-image {
+      transform: scale(1.1);
+    }
+
+    .service-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(10, 14, 39, 0.8) 100%);
+      z-index: 1;
+    }
+
+    .service-icon-badge {
+      position: absolute;
+      bottom: -30px;
+      left: 2.5rem;
+      width: 70px;
+      height: 70px;
+      background: var(--gradient-fire);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: var(--white);
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(255, 59, 59, 0.4);
+      transition: all 0.4s;
+      border: 3px solid var(--navy-light);
+    }
+
+    .service-card:hover .service-icon-badge {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 15px 40px rgba(255, 59, 59, 0.6);
+    }
+
+    .service-content {
+      padding: 3.5rem 2.5rem 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-title {
+      color: var(--fire-orange);
+    }
+
+    .service-description {
+      color: var(--gray-200);
+      line-height: 1.8;
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--fire-orange);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .service-card:hover .service-link {
+      gap: 1.2rem;
+      color: var(--fire-red);
+      transform: translateX(5px);
+    }
+
+    /* Process Section */
+    .process-section {
+      background: var(--deep-navy);
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .process-card {
+      background: rgba(20, 27, 61, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s;
+      backdrop-filter: blur(10px);
+    }
+
+    .process-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 59, 59, 0.3);
+      box-shadow: var(--shadow-card);
+    }
+
+    .process-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(255, 59, 59, 0.2);
+      line-height: 1;
+      margin-bottom: 1rem;
+      transition: all 0.3s;
+    }
+
+    .process-card:hover .process-number {
+      color: var(--fire-orange);
+      text-shadow: 0 0 30px rgba(255, 59, 59, 0.5);
+    }
+
+    .process-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 59, 59, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--fire-red);
+      margin: 0 auto 1.5rem;
+      border: 2px solid rgba(255, 59, 59, 0.2);
+      transition: all 0.3s;
+    }
+
+    .process-card:hover .process-icon {
+      background: var(--fire-red);
+      color: var(--white);
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(255, 59, 59, 0.4);
+    }
+
+    .process-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--white);
+    }
+
+    .process-text {
+      color: var(--gray-200);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .process-connector {
+      position: absolute;
+      top: 50%;
+      right: -2rem;
+      width: 2rem;
+      height: 2px;
+      background: linear-gradient(to right, var(--fire-red), transparent);
+      display: none;
+    }
+
+    /* Why Choose Us Section - Updated to match image */
+    .why-section {
+      background: var(--deep-navy);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 0;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .why-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .why-content>p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 90%;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1.25rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .why-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateX(5px);
+      border-color: rgba(255, 59, 59, 0.2);
+    }
+
+    .why-check {
+      width: 36px;
+      height: 36px;
+      background: var(--gradient-fire);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(255, 59, 59, 0.3);
+    }
+
+    .why-text h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .why-text p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .why-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .why-image {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 24px;
+      position: relative;
+      z-index: 1;
+      object-fit: cover;
+      height: 400px;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(20, 27, 61, 0.95);
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 59, 59, 0.2);
+      z-index: 2;
+      backdrop-filter: blur(20px);
+      animation: float-card 6s ease-in-out infinite;
+      min-width: 140px;
+      text-align: center;
+    }
+
+    .floating-card-1 {
+      top: 20px;
+      right: 0;
+      animation-delay: 0.5s;
+    }
+
+    .floating-card-2 {
+      bottom: 60px;
+      left: -20px;
+      animation: float-card 6s ease-in-out infinite reverse;
+      animation-delay: 1s;
+    }
+
+    @keyframes float-card {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .floating-card .number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--fire-orange);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .floating-card .label {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--gradient-fire);
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 0;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    .cta-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-title {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      text-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-description {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--white);
+      color: var(--fire-red);
+      padding: 1.1rem 2.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border: 2px solid transparent;
+      transition: all 0.4s;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--deep-navy);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 5rem 0 2.5rem;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-fire);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-description {
+      color: var(--gray-200);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+      transform: translateY(-5px) rotate(10deg);
+      box-shadow: 0 10px 30px rgba(255, 59, 59, 0.4);
+    }
+
+    .footer-title {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-link {
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .footer-link i {
+      color: var(--fire-orange);
+      transition: transform 0.3s;
+      font-size: 0.8rem;
+    }
+
+    .footer-link:hover {
+      color: var(--fire-orange);
+      padding-left: 10px;
+    }
+
+    .footer-link:hover i {
+      transform: translateX(5px);
+      color: var(--fire-red);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-copyright {
+      color: var(--gray-600);
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 55px;
+      height: 55px;
+      background: var(--gradient-fire);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      text-decoration: none;
+      box-shadow: var(--shadow-glow);
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-glow-strong);
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-connector {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: rgba(10, 14, 39, 0.98);
+        backdrop-filter: blur(30px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 2px solid var(--fire-red);
+        z-index: 999;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .nav-link {
+        font-size: 1.3rem;
+        padding: 0.75rem 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        width: 200px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .why-visual {
+        order: -1;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .floating-card-1 {
+        right: -10px;
+      }
+
+      .floating-card-2 {
+        left: -10px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero {
+        min-height: 40vh;
+        padding-top: 100px;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-content h2 {
+        font-size: 2rem;
+      }
+
+      .why-image {
+        height: 300px;
+      }
+
+      .floating-card {
+        padding: 1rem;
+        min-width: 120px;
+      }
+
+      .floating-card .number {
+        font-size: 1.5rem;
+      }
+
+      .floating-card .label {
+        font-size: 0.65rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .back-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .logo-title {
+        font-size: 1.4rem;
+      }
+
+      .emergency-btn span {
+        display: none;
+      }
+
+      .emergency-btn {
+        padding: 0.75rem;
+      }
+
+      .service-content {
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      .why-item {
+        padding: 1rem;
+      }
+    }
+
+    /* Animation Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+      filter: blur(10px);
+      transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="Index.html" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-fire-alt"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">Flashpoint</span>
+            <span class="logo-subtitle">Fire & Safety</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about us.html" class="nav-link">About Us</a></li>
+            <li><a href="services.html" class="nav-link active">Services</a></li>
+            <li><a href="try - vr.html" class="nav-link">Try VR/MR Free</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="tel:0506742100" class="emergency-btn">
+            <i class="fas fa-phone-alt"></i>
+            <span>050 674 2100</span>
+          </a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="page-hero-content">
+      <div class="page-hero-badge reveal">
+        <i class="fas fa-tools"></i>
+        <span>Comprehensive Solutions</span>
+      </div>
+
+      <h1 class="page-hero-title reveal">
+        Our <span>Services</span>
+      </h1>
+
+      <p class="page-hero-description reveal">
+        Top-tier fire safety and prevention solutions tailored to your needs. From supply to installation, training to
+        compliance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What We Offer</span>
+        <h2 class="section-title">Comprehensive Fire Safety Services</h2>
+        <p class="section-subtitle">We provide end-to-end fire protection solutions for homes, businesses, and
+          industrial facilities across the UAE.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-image-wrapper">
+            <img src="Images/DPEX3-1.png" alt="Fire extinguisher supply" class="service-image">
+            <div class="service-image-overlay"></div>
+            <div class="service-icon-badge">
+              <i class="fas fa-fire-extinguisher"></i>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Fire Extinguisher Supply</h3>
+            <p class="service-description">Certified supply and refills for homes, vehicles, and businesses using
+              quality-assured products from leading manufacturers.</p>
+            <a href="contact.html" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-image-wrapper">
+            <img src="Images/Closed-up of Fire alarm press machine (1).jpg" alt="Fire alarm installation"
+              class="service-image">
+            <div class="service-image-overlay"></div>
+            <div class="service-icon-badge">
+              <i class="fas fa-bell"></i>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Alarm Installation</h3>
+            <p class="service-description">Wired and wireless fire/smoke alarm systems installed and maintained by our
+              certified team with 24/7 monitoring capabilities.</p>
+            <a href="contact.html" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-image-wrapper">
+            <img src="Images/Safety-training-at-the-warehouse.jpg" alt="Safety training" class="service-image">
+            <div class="service-image-overlay"></div>
+            <div class="service-icon-badge">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Safety Training</h3>
+            <p class="service-description">Comprehensive fire safety training for staff, schools, and residential
+              communities including evacuation drills and equipment usage.</p>
+            <a href="contact.html" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-image-wrapper">
+            <img src="Images/Document.png" alt="Compliance audits" class="service-image">
+            <div class="service-image-overlay"></div>
+            <div class="service-icon-badge">
+              <i class="fas fa-clipboard-check"></i>
+            </div>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Compliance Audits</h3>
+            <p class="service-description">Full safety inspections to ensure your site meets all fire code and Civil
+              Defense compliance standards in the UAE.</p>
+            <a href="contact.html" class="service-link">
+              Learn More <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">How We Work</span>
+        <h2 class="section-title">Our Service Process</h2>
+        <p class="section-subtitle">A streamlined approach to ensuring your complete fire safety</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="process-number">01</div>
+          <div class="process-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3 class="process-title">Assessment</h3>
+          <p class="process-text">Comprehensive site evaluation to identify risks and requirements</p>
+        </div>
+
+        <div class="process-card reveal">
+          <div class="process-number">02</div>
+          <div class="process-icon">
+            <i class="fas fa-drafting-compass"></i>
+          </div>
+          <h3 class="process-title">Design</h3>
+          <p class="process-text">Customized safety solution tailored to your specific needs</p>
+        </div>
+
+        <div class="process-card reveal">
+          <div class="process-number">03</div>
+          <div class="process-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 class="process-title">Installation</h3>
+          <p class="process-text">Professional implementation by certified technicians</p>
+        </div>
+
+        <div class="process-card reveal">
+          <div class="process-number">04</div>
+          <div class="process-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3 class="process-title">Maintenance</h3>
+          <p class="process-text">Ongoing support and regular system checks</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section - Updated to match image -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-content reveal">
+          <h2>Your Safety is Our Priority</h2>
+          <p>
+            With over two decades of experience, our trusted professionals offer tailored fire safety services that
+            protect what matters most. We combine cutting-edge technology with certified expertise.
+          </p>
+
+          <ul class="why-list">
+            <li class="why-item">
+              <div class="why-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="why-text">
+                <h4>Civil Defense Certified</h4>
+                <p>Full UAE Civil Defense approval for all services</p>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="why-text">
+                <h4>24/7 Emergency Support</h4>
+                <p>Round-the-clock assistance when you need it most</p>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="why-text">
+                <h4>Quality Guaranteed</h4>
+                <p>Premium products from leading manufacturers</p>
+              </div>
+            </li>
+            <li class="why-item">
+              <div class="why-check">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="why-text">
+                <h4>Expert Team</h4>
+                <p>Highly trained and experienced safety professionals</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="why-visual reveal">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&auto=format&fit=crop"
+            alt="Fire safety professional" class="why-image">
+
+          <div class="floating-card floating-card-1">
+            <span class="number">20+</span>
+            <span class="label">Years Experience</span>
+          </div>
+
+          <div class="floating-card floating-card-2">
+            <span class="number">100%</span>
+            <span class="label">Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2 class="cta-title">Ready to Secure Your Property?</h2>
+        <p class="cta-description">Contact our team today for a comprehensive safety assessment and discover how we can
+          protect what matters most.</p>
+        <a href="contact.html" class="btn-white">
+          <i class="fas fa-calendar-check"></i>
+          <span>Get Free Consultation</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-fire-alt"></i>
+            </div>
+            <div class="logo-text">
+              <span class="logo-title">Flashpoint</span>
+              <span class="logo-subtitle">Fire & Safety</span>
+            </div>
+          </a>
+          <p class="footer-description">
+            Leading fire protection specialists in Umm Al Quwain, UAE. Providing certified installation, maintenance,
+            and complete safety solutions.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/971506742100" class="social-link" aria-label="WhatsApp" target="_blank"><i
+                class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="about us.html" class="footer-link"><i class="fas fa-chevron-right"></i> About Us</a></li>
+            <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a></li>
+            <li><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Extinguisher Supply</a>
+            </li>
+            <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Alarm Systems</a></li>
+            <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Safety Training</a>
+            </li>
+            <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right"></i> Compliance Audits</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Contact Info</h4>
+          <ul class="footer-links">
+            <li><a href="tel:0506742100" class="footer-link"><i class="fas fa-phone"></i> 050 674 2100</a></li>
+            <li><a href="mailto:info@flashpoint.ae" class="footer-link"><i class="fas fa-envelope"></i>
+                info@flashpoint.ae</a></li>
+            <li><span class="footer-link"><i class="fas fa-map-marker-alt"></i> Umm Al Quwain, UAE</span></li>
+            <li><span class="footer-link"><i class="fas fa-clock"></i> 24/7 Emergency Service</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2025 Flashpoint Fire and Safety. All rights reserved. | Designed with <i
+            class="fas fa-heart" style="color: var(--fire-red);"></i> for your safety</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    const header = document.getElementById('header');
+    const updateHeader = () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
+
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.innerHTML = navMenu.classList.contains('active') ?
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+
+    // Particle animation
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = window.innerWidth < 768 ? 20 : 40;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.width = Math.random() * 6 + 2 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = (15 + Math.random() * 15) + 's';
+      particle.style.opacity = Math.random() * 0.5 + 0.3;
+      particlesContainer.appendChild(particle);
+    }
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Escape key to close menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+  </script>
+</body>
+
+</html>

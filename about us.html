@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Flashpoint Fire & Safety | Our Story & Mission</title>
+  <meta name="description"
+    content="Discover the story and mission of Flashpoint Fire & Safety, the UAE's leading fire protection specialists since 2005. Trusted safety solutions across all 7 Emirates.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --fire-red: #ff3b3b;
+      --fire-orange: #ff6b35;
+      --deep-navy: #0a0e27;
+      --navy-light: #141b3d;
+      --accent-gold: #ffd700;
+      --white: #ffffff;
+      --gray-100: #f8fafc;
+      --gray-200: #e2e8f0;
+      --gray-600: #475569;
+      --gradient-fire: linear-gradient(135deg, #ff3b3b 0%, #ff6b35 100%);
+      --gradient-dark: linear-gradient(135deg, #0a0e27 0%, #141b3d 100%);
+      --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+      --glass-bg: rgba(20, 27, 61, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --shadow-glow: 0 0 40px rgba(255, 59, 59, 0.3);
+      --shadow-glow-strong: 0 0 60px rgba(255, 59, 59, 0.5);
+      --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      --shadow-card-hover: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--deep-navy);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-fire);
+      border-radius: 10px;
+      border: 2px solid var(--deep-navy);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.5rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .header.scrolled {
+      background: rgba(10, 14, 39, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 1rem 0;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      border-bottom: 1px solid rgba(255, 59, 59, 0.2);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-fire);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      animation: pulse-fire 3s infinite;
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes pulse-fire {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 59, 59, 0.7);
+      }
+    }
+
+    .logo-title {
+      font-size: 1.5rem;
+      background: var(--gradient-fire);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-subtitle {
+      font-size: 0.75rem;
+      color: var(--fire-orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-fire);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--fire-orange);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .emergency-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--gradient-fire);
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: var(--shadow-glow);
+      transition: all 0.3s;
+    }
+
+    .emergency-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow-strong);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--white);
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .page-hero {
+      position: relative;
+      padding: 12rem 0 8rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255, 59, 59, 0.1), transparent 70%);
+      z-index: -1;
+    }
+
+    .hero-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--fire-orange);
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.5;
+      }
+
+      90% {
+        opacity: 0.5;
+      }
+
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    .page-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 59, 59, 0.1);
+      border: 1px solid rgba(255, 59, 59, 0.3);
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      color: var(--fire-orange);
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .page-hero-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .page-hero-title span {
+      background: var(--gradient-fire);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero-description {
+      font-size: 1.2rem;
+      color: var(--gray-200);
+      max-width: 800px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Sections */
+    .section {
+      padding: 8rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      color: var(--fire-orange);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    /* Mission Grid */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .mission-image-container {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .mission-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .mission-image-container:hover .mission-image {
+      transform: scale(1.05);
+    }
+
+    .mission-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .stat-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2rem;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--fire-red);
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      color: var(--fire-orange);
+      font-family: 'Space Grotesk', sans-serif;
+      display: block;
+    }
+
+    /* Values Grid */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .value-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 3rem 2rem;
+      border-radius: 24px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-fire);
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: 0;
+    }
+
+    .value-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 59, 59, 0.4);
+    }
+
+    .value-icon {
+      font-size: 2rem;
+      color: var(--fire-red);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-text {
+      color: var(--gray-200);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Timeline */
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .timeline-container::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--gradient-fire);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+
+    .timeline-item {
+      padding: 2rem 0;
+      width: 50%;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      padding-right: 3rem;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      padding-left: 3rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: var(--gradient-fire);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      box-shadow: 0 0 15px var(--fire-red);
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -10px;
+    }
+
+    .timeline-content {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      padding: 2rem;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .timeline-content:hover {
+      border-color: var(--fire-red);
+      transform: scale(1.02);
+    }
+
+    .timeline-year {
+      color: var(--fire-orange);
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .team-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+
+    .team-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--fire-red);
+    }
+
+    .team-img-wrapper {
+      height: 350px;
+      overflow: hidden;
+    }
+
+    .team-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .team-card:hover .team-img {
+      transform: scale(1.1);
+    }
+
+    .team-info {
+      padding: 2rem;
+    }
+
+    .team-role {
+      color: var(--fire-orange);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--gradient-fire);
+      text-align: center;
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm-45 70c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm43-56c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm-36 73c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm24-49c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm-66 15c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm33 31c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.373-12 12 5.373 12 12 12zm-39-67c6.627 0 12-5.373 12-12s-5.373-12-12-12-12 5.373-12 12 5.373 12 12 12z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--fire-red);
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      margin-top: 2rem;
+      transition: all 0.3s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      background: #05081a;
+      padding: 6rem 0 2rem;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--fire-orange);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      color: var(--white);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .social-link:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--gray-600);
+      font-size: 0.9rem;
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-fire);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.4s;
+      z-index: 1000;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--deep-navy);
+        flex-direction: column;
+        padding: 6rem 2rem;
+        transition: 0.5s;
+        border-left: 1px solid var(--glass-border);
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-container::after {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        padding-left: 50px !important;
+        padding-right: 0 !important;
+        text-align: left !important;
+      }
+
+      .timeline-dot {
+        left: 10px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <header class="header" id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          <div class="logo-icon"><i class="fas fa-fire-alt"></i></div>
+          <div class="logo-text">
+            <span class="logo-title">Flashpoint</span>
+            <span class="logo-subtitle">Fire & Safety</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about us.html" class="nav-link active" aria-current="page">About Us</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="try - vr.html" class="nav-link">Try VR/MR</a></li>
+            <li><a href="products.html" class="nav-link">Products</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a href="tel:0506742100" class="emergency-btn">
+            <i class="fas fa-phone-alt"></i>
+            <span>050 674 2100</span>
+          </a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-bg"></div>
+      <div class="hero-particles" id="particles"></div>
+      <div class="container">
+        <div class="page-hero-badge reveal">
+          <i class="fas fa-shield-alt"></i>
+          <span>Trusted Since 2005</span>
+        </div>
+        <h1 class="page-hero-title reveal">
+          Our Story of<br><span>Safety & Excellence</span>
+        </h1>
+        <p class="page-hero-description reveal">
+          Dedicated to saving lives and protecting property through innovation, expertise, and unwavering commitment to
+          safety standards across the UAE.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="reveal">
+            <span class="section-label">Our Mission</span>
+            <h2 class="section-title">Protecting What Matters Most</h2>
+            <p>Flashpoint Fire and Safety was founded on a single principle: to provide reliable, cutting-edge fire
+              protection solutions. We are committed to making communities safer through technology and integrity.</p>
+            <div class="mission-stats">
+              <div class="stat-card">
+                <span class="stat-number" data-target="20" data-suffix="+">0</span>
+                <span>Years Experience</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number" data-target="5000" data-suffix="+">0</span>
+                <span>Projects Done</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number" data-target="100" data-suffix="%">0</span>
+                <span>Compliance</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number" data-target="24" data-suffix="/7">0</span>
+                <span>Support</span>
+              </div>
+            </div>
+          </div>
+          <div class="mission-image-container reveal">
+            <img src="https://images.unsplash.com/photo-1590642916589-592bca10dfbf?w=800&auto=format&fit=crop"
+              alt="Safety Team" class="mission-image">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--navy-light);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Core Values</span>
+          <h2 class="section-title">What We Stand For</h2>
+        </div>
+        <div class="values-grid">
+          <div class="value-card reveal">
+            <i class="fas fa-heart value-icon"></i>
+            <h3 class="value-title">Integrity</h3>
+            <p class="value-text">We operate with complete transparency and honesty in every project we undertake.</p>
+          </div>
+          <div class="value-card reveal">
+            <i class="fas fa-lightbulb value-icon"></i>
+            <h3 class="value-title">Innovation</h3>
+            <p class="value-text">Continuous investment in the latest fire safety technologies and methodologies.</p>
+          </div>
+          <div class="value-card reveal">
+            <i class="fas fa-users value-icon"></i>
+            <h3 class="value-title">People First</h3>
+            <p class="value-text">Protecting human lives is our absolute priority in every decision we make.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Our Journey</span>
+          <h2 class="section-title">Two Decades of Excellence</h2>
+        </div>
+        <div class="timeline-container">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2005</span>
+              <h3>Founded in UAQ</h3>
+              <p>Established with a vision to provide world-class fire protection services.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2012</span>
+              <h3>Dubai Expansion</h3>
+              <p>Extended operations to Dubai and Sharjah to serve major developments.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2020</span>
+              <h3>Tech Integration</h3>
+              <p>Pioneered smart fire detection and IoT-enabled monitoring solutions.</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <span class="timeline-year">2025</span>
+              <h3>Industry Leader</h3>
+              <p>Protecting over 2,500 properties nationwide with a team of certified pros.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--navy-light);">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Our Team</span>
+          <h2 class="section-title">Meet the Experts</h2>
+        </div>
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img src="Images/Fayiz Mohammed Shibu.jpeg" alt="Fayiz Mohammed Shibu" class="team-img">
+            </div>
+            <div class="team-info">
+              <span class="team-role">CEO & Founder</span>
+              <h3>Fayiz Mohammed Shibu</h3>
+              <p>20+ years of fire safety expertise and Civil Defense certification.</p>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img src="Images/Flashpoint 1 (1).jpeg" alt="Ahmad Saber" class="team-img">
+            </div>
+            <div class="team-info">
+              <span class="team-role">Operations Director</span>
+              <h3>Ahmad Saber</h3>
+              <p>Ensuring seamless service delivery and quality standards across projects.</p>
+            </div>
+          </div>
+          <div class="team-card reveal">
+            <div class="team-img-wrapper">
+              <img src="Images/Flashpoint  2.jpeg" alt="Shehim Shahul Hameed" class="team-img">
+            </div>
+            <div class="team-info">
+              <span class="team-role">Technical Lead</span>
+              <h3>Shehim Shahul Hameed</h3>
+              <p>Specializing in advanced suppression systems and smart detection.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container reveal">
+        <h2 class="section-title">Ready to Enhance Your Safety?</h2>
+        <p>Contact our experts today for a comprehensive safety assessment.</p>
+        <a href="contact.html" class="cta-btn">Get Free Consultation</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo" style="margin-bottom: 1.5rem;">
+            <div class="logo-icon"><i class="fas fa-fire-alt"></i></div>
+            <div class="logo-text"><span class="logo-title">Flashpoint</span></div>
+          </a>
+          <p>Leading fire protection specialists across the UAE. Certified solutions for all seven Emirates.</p>
+          <div class="social-links">
+            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/971506742100" class="social-link"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about us.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Contact</h4>
+          <ul class="footer-links">
+            <li><i class="fas fa-phone" style="color: var(--fire-orange);"></i> 050 674 2100</li>
+            <li><i class="fas fa-envelope" style="color: var(--fire-orange);"></i> info@flashpoint.ae</li>
+            <li><i class="fas fa-map-marker-alt" style="color: var(--fire-orange);"></i> Multiple Locations, UAE</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Flashpoint Fire and Safety. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header Scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile Menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      menuToggle.innerHTML = navMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+
+    // Reveal Animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          if (entry.target.querySelector('.stat-number')) {
+            startCounters(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Counters
+    function startCounters(container) {
+      const counters = container.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        const suffix = counter.getAttribute('data-suffix') || '';
+        let count = 0;
+        const duration = 2000;
+        const increment = target / (duration / 16);
+
+        const update = () => {
+          count += increment;
+          if (count < target) {
+            counter.innerText = Math.ceil(count) + suffix;
+            requestAnimationFrame(update);
+          } else {
+            counter.innerText = target + suffix;
+          }
+        };
+        update();
+      });
+    }
+
+    // Particles
+    const particles = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.width = p.style.height = (Math.random() * 4 + 2) + 'px';
+      p.style.animationDelay = Math.random() * 10 + 's';
+      p.style.animationDuration = (Math.random() * 10 + 10) + 's';
+      particles.appendChild(p);
+    }
+
+    // Back to Top
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      btt.classList.toggle('visible', window.scrollY > 300);
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,2340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium VR Experience | Flashpoint Fire & Safety</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --fire-red: #ff3b3b;
+      --fire-orange: #ff6b35;
+      --deep-navy: #0a0e27;
+      --navy-light: #141b3d;
+      --accent-gold: #ffd700;
+      --vr-purple: #8b5cf6;
+      --vr-cyan: #06b6d4;
+      --mr-green: #10b981;
+      --white: #ffffff;
+      --gray-100: #f8fafc;
+      --gray-200: #e2e8f0;
+      --gray-600: #475569;
+      --gradient-fire: linear-gradient(135deg, #ff3b3b 0%, #ff6b35 100%);
+      --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+      --gradient-vr: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+      --gradient-mr: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+      --shadow-glow: 0 0 40px rgba(255, 59, 59, 0.3);
+      --shadow-glow-strong: 0 0 60px rgba(255, 59, 59, 0.5);
+      --shadow-vr: 0 0 40px rgba(139, 92, 246, 0.4);
+      --shadow-gold: 0 0 40px rgba(255, 215, 0, 0.4);
+      --shadow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--deep-navy);
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient-fire);
+      border-radius: 6px;
+      border: 3px solid var(--deep-navy);
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 59, 59, 0.1);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--white);
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: translateY(-2px);
+    }
+
+    .logo-icon {
+      width: 55px;
+      height: 55px;
+      background: var(--gradient-fire);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      animation: pulse-fire 3s infinite;
+      box-shadow: var(--shadow-glow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 60%);
+      transform: rotate(30deg);
+    }
+
+    @keyframes pulse-fire {
+
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 59, 59, 0.4);
+      }
+
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 59, 59, 0.7);
+      }
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: var(--gradient-fire);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-subtitle {
+      font-size: 0.8rem;
+      color: var(--fire-orange);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 600;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 3rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--gradient-fire);
+      border-radius: 2px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover::before {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--fire-orange);
+    }
+
+    .nav-link.premium {
+      color: var(--accent-gold);
+    }
+
+    .nav-link.premium::before {
+      background: var(--gradient-gold);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .premium-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gradient-gold);
+      color: var(--deep-navy);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: var(--shadow-gold);
+      animation: goldPulse 2s infinite;
+    }
+
+    @keyframes goldPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.7);
+      }
+    }
+
+    .logout-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .logout-btn:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: all 0.3s;
+    }
+
+    /* Login Modal */
+    .login-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s;
+    }
+
+    .login-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .login-container {
+      width: 90%;
+      max-width: 500px;
+      background: linear-gradient(135deg, rgba(20, 27, 61, 0.9) 0%, rgba(10, 14, 39, 0.95) 100%);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 28px;
+      padding: 3rem;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform 0.4s;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .login-overlay.active .login-container {
+      transform: translateY(0);
+    }
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .login-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--gradient-gold);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: var(--shadow-gold);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .login-header h2 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      background: var(--gradient-gold);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-header p {
+      color: var(--gray-200);
+      font-size: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--gray-200);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: var(--white);
+      font-size: 1rem;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    }
+
+    .form-input::placeholder {
+      color: var(--gray-600);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gradient-gold);
+      color: var(--deep-navy);
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.5);
+    }
+
+    .login-divider {
+      display: flex;
+      align-items: center;
+      margin: 2rem 0;
+      color: var(--gray-600);
+      font-size: 0.9rem;
+    }
+
+    .login-divider::before,
+    .login-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .login-divider span {
+      padding: 0 1rem;
+    }
+
+    .demo-access {
+      text-align: center;
+    }
+
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(255, 59, 59, 0.1);
+      border: 2px solid rgba(255, 59, 59, 0.3);
+      color: var(--fire-orange);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .demo-btn:hover {
+      background: rgba(255, 59, 59, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .error-message {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      padding: 1rem;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .error-message.show {
+      display: flex;
+    }
+
+    /* Main Content - Hidden by default */
+    .premium-content {
+      display: none;
+      padding-top: 120px;
+      min-height: 100vh;
+    }
+
+    .premium-content.active {
+      display: block;
+    }
+
+    /* Hero Section */
+    .premium-hero {
+      position: relative;
+      padding: 6rem 0;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(255, 59, 59, 0.1) 50%, rgba(16, 185, 129, 0.1) 100%);
+      border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .premium-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .premium-badge-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255, 215, 0, 0.15);
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: var(--shadow-gold);
+      animation: badgeGlow 3s infinite;
+    }
+
+    @keyframes badgeGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+      }
+
+      50% {
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+      }
+    }
+
+    .premium-hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .premium-hero h1 span {
+      background: var(--gradient-gold);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .premium-hero p {
+      font-size: 1.25rem;
+      color: var(--gray-200);
+      max-width: 700px;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .device-status {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .device-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .device-item.connected {
+      border-color: var(--mr-green);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .device-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-vr);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .device-item.connected .device-icon {
+      background: var(--gradient-mr);
+    }
+
+    .device-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .device-info span {
+      font-size: 0.85rem;
+      color: var(--gray-200);
+    }
+
+    /* Experience Grid */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-label {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--accent-gold);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 1.5rem;
+      border: 2px solid rgba(255, 215, 0, 0.2);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--gray-200);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .experiences-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .experience-card {
+      background: rgba(20, 27, 61, 0.6);
+      border: 2px solid rgba(255, 215, 0, 0.2);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(255, 215, 0, 0.5);
+      box-shadow: 0 30px 60px rgba(255, 215, 0, 0.2);
+    }
+
+    .experience-card.locked {
+      opacity: 0.7;
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .experience-card.locked:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .experience-preview {
+      height: 250px;
+      background: linear-gradient(135deg, #1a1f4b 0%, #0a0e27 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-preview::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 50%, rgba(255, 59, 59, 0.2) 0%, transparent 50%);
+    }
+
+    .preview-grid {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image:
+        linear-gradient(rgba(255, 215, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 215, 0, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridMove 20s linear infinite;
+      transform: perspective(500px) rotateX(60deg);
+      transform-origin: center top;
+    }
+
+    @keyframes gridMove {
+      0% {
+        transform: perspective(500px) rotateX(60deg) translateY(0);
+      }
+
+      100% {
+        transform: perspective(500px) rotateX(60deg) translateY(40px);
+      }
+    }
+
+    .preview-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-icon {
+      width: 100px;
+      height: 100px;
+      background: var(--gradient-gold);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: var(--shadow-gold);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .experience-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(10, 14, 39, 0.9);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .experience-badge.paid {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: var(--mr-green);
+      color: var(--mr-green);
+    }
+
+    .experience-badge.locked {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: var(--fire-red);
+      color: var(--fire-red);
+    }
+
+    .experience-info {
+      padding: 2rem;
+    }
+
+    .experience-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .experience-info h3 i {
+      color: var(--accent-gold);
+    }
+
+    .experience-info p {
+      color: var(--gray-200);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .experience-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--gray-200);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .meta-item i {
+      color: var(--accent-gold);
+    }
+
+    .btn-launch-premium {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.4s;
+      border: none;
+      cursor: pointer;
+      background: var(--gradient-gold);
+      color: var(--deep-navy);
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    }
+
+    .btn-launch-premium:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.5);
+    }
+
+    .btn-launch-premium.locked {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--gray-200);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+
+    .btn-launch-premium.locked:hover {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold);
+    }
+
+    /* Features Section */
+    .features-grid-premium {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-card-premium {
+      background: rgba(20, 27, 61, 0.5);
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .feature-card-premium:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 215, 0, 0.4);
+      box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1);
+    }
+
+    .feature-icon-premium {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-gold);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .feature-card-premium h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card-premium p {
+      color: var(--gray-200);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Session Info */
+    .session-bar {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 14, 39, 0.95);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 50px;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      backdrop-filter: blur(20px);
+      z-index: 100;
+      box-shadow: var(--shadow-gold);
+    }
+
+    .session-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .session-avatar {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--deep-navy);
+    }
+
+    .session-details h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .session-details span {
+      font-size: 0.8rem;
+      color: var(--gray-200);
+    }
+
+    .session-timer {
+      padding-left: 2rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .timer-label {
+      font-size: 0.75rem;
+      color: var(--gray-200);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timer-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .wallet-display {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-left: 2rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wallet-label {
+      font-size: 0.75rem;
+      color: var(--gray-200);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .wallet-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--mr-green);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Payment Modal */
+    .payment-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 10001;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .payment-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .payment-container {
+      width: 90%;
+      max-width: 500px;
+      background: linear-gradient(135deg, rgba(20, 27, 61, 0.9) 0%, rgba(10, 14, 39, 0.95) 100%);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 28px;
+      padding: 3rem;
+      position: relative;
+      transform: translateY(30px);
+      transition: transform 0.4s;
+      box-shadow: 0 0 60px rgba(16, 185, 129, 0.3);
+    }
+
+    .payment-overlay.active .payment-container {
+      transform: translateY(0);
+    }
+
+    .payment-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .payment-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--gradient-mr);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+    }
+
+    .payment-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: var(--mr-green);
+    }
+
+    .payment-header p {
+      color: var(--gray-200);
+      font-size: 1rem;
+    }
+
+    .price-display {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 2px solid rgba(16, 185, 129, 0.3);
+      border-radius: 16px;
+    }
+
+    .price-amount {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--mr-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .price-amount i {
+      font-size: 2rem;
+    }
+
+    .price-label {
+      color: var(--gray-200);
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .wallet-balance {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .wallet-balance-label {
+      color: var(--gray-200);
+      font-size: 0.9rem;
+    }
+
+    .wallet-balance-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .payment-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gradient-mr);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 1rem;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .payment-btn:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(16, 185, 129, 0.5);
+    }
+
+    .payment-btn:disabled {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--gray-600);
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .payment-btn.insufficient {
+      background: rgba(239, 68, 68, 0.2);
+      border: 2px solid rgba(239, 68, 68, 0.4);
+      color: #ef4444;
+    }
+
+    .add-funds-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(255, 215, 0, 0.1);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      color: var(--accent-gold);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .add-funds-btn:hover {
+      background: rgba(255, 215, 0, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .payment-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .payment-close:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+      transform: rotate(90deg);
+    }
+
+    .success-message {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--mr-green);
+      padding: 1rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    .success-message.show {
+      display: flex;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* VR Modal */
+    .vr-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(30px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .vr-modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .vr-modal-container {
+      width: 95%;
+      max-width: 1400px;
+      height: 90vh;
+      background: rgba(20, 27, 61, 0.95);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.4s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vr-modal-overlay.active .vr-modal-container {
+      transform: scale(1);
+    }
+
+    .vr-modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 14, 39, 0.5);
+    }
+
+    .vr-modal-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .vr-modal-title i {
+      color: var(--accent-gold);
+    }
+
+    .vr-close {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .vr-close:hover {
+      background: var(--fire-red);
+      border-color: var(--fire-red);
+      transform: rotate(90deg);
+    }
+
+    .vr-modal-content {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .vr-canvas {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .vr-stereo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+      gap: 2px;
+      background: #000;
+    }
+
+    .vr-eye {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vr-eye-label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      z-index: 10;
+    }
+
+    .vr-scene {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #1a1f4b 0%, #0a0e27 100%);
+      position: relative;
+      perspective: 1000px;
+    }
+
+    .vr-controls-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(10, 14, 39, 0.95) 0%, transparent 100%);
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .vr-control-btn {
+      padding: 1rem 2rem;
+      background: rgba(255, 215, 0, 0.2);
+      border: 2px solid rgba(255, 215, 0, 0.4);
+      color: var(--accent-gold);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .vr-control-btn:hover {
+      background: rgba(255, 215, 0, 0.3);
+      transform: translateY(-3px);
+    }
+
+    /* Loading Screen */
+    .vr-loading {
+      position: absolute;
+      inset: 0;
+      background: var(--deep-navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .vr-loading-spinner {
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba(255, 215, 0, 0.2);
+      border-top-color: var(--accent-gold);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .vr-loading p {
+      color: var(--accent-gold);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--deep-navy);
+      border-top: 1px solid rgba(255, 215, 0, 0.1);
+      padding: 4rem 0 2rem;
+      margin-bottom: 100px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-description {
+      color: var(--gray-200);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-title {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent-gold);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-link {
+      color: var(--gray-200);
+      text-decoration: none;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-link:hover {
+      color: var(--accent-gold);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--gray-600);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .experiences-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid-premium {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .device-status {
+        flex-direction: column;
+      }
+
+      .session-bar {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        width: 90%;
+      }
+
+      .session-timer,
+      .wallet-display {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1rem;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .premium-badge {
+        display: none;
+      }
+
+      .features-grid-premium {
+        grid-template-columns: 1fr;
+      }
+
+      .vr-stereo {
+        grid-template-columns: 1fr;
+      }
+
+      .vr-eye-label {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Login Overlay -->
+  <div class="login-overlay active" id="loginOverlay">
+    <div class="login-container">
+      <div class="login-header">
+        <div class="login-icon">
+          <i class="fas fa-crown"></i>
+        </div>
+        <h2>Premium Access</h2>
+        <p>Enter your credentials to access exclusive VR experiences</p>
+      </div>
+
+      <div class="error-message" id="errorMessage">
+        <i class="fas fa-exclamation-circle"></i>
+        <span>Invalid credentials. Please try again.</span>
+      </div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">Member Email</label>
+          <input type="email" class="form-input" id="emailInput" placeholder="premium@flashpoint.ae" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Access Code</label>
+          <input type="password" class="form-input" id="passwordInput" placeholder="FlashPoint@2025" required>
+        </div>
+        <button type="submit" class="login-btn">
+          <i class="fas fa-unlock"></i> Unlock Premium Content
+        </button>
+      </form>
+
+      <div class="login-divider">
+        <span>OR</span>
+      </div>
+
+      <div class="demo-access">
+        <a href="try - vr.html" class="demo-btn">
+          <i class="fas fa-vr-cardboard"></i>
+          Try Free Version Instead
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Modal -->
+  <div class="payment-overlay" id="paymentOverlay">
+    <div class="payment-container">
+      <button class="payment-close" onclick="closePayment()">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="payment-header">
+        <div class="payment-icon">
+          <i class="fas fa-lock-open"></i>
+        </div>
+        <h2>Unlock Experience</h2>
+        <p>Pay once to access this premium simulation anytime</p>
+      </div>
+
+      <div class="price-display">
+        <div class="price-amount">
+          <i class="fas fa-coins"></i>
+          <span id="priceAmount">50</span>
+        </div>
+        <div class="price-label">Flash Tokens Required</div>
+      </div>
+
+      <div class="wallet-balance">
+        <span class="wallet-balance-label">Your Balance</span>
+        <span class="wallet-balance-value" id="paymentWalletBalance">
+          <i class="fas fa-coins"></i>
+          <span>23000</span>
+        </span>
+      </div>
+
+      <button class="payment-btn" id="confirmPaymentBtn" onclick="processPayment()">
+        <i class="fas fa-check"></i> Confirm Purchase
+      </button>
+
+      <button class="add-funds-btn" id="addFundsBtn" onclick="addFunds()" style="display: none;">
+        <i class="fas fa-plus-circle"></i> Add 100 Flash Tokens (Demo)
+      </button>
+
+      <div class="success-message" id="paymentSuccess">
+        <i class="fas fa-check-circle"></i>
+        <span>Purchase successful! Experience unlocked.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-fire-alt"></i>
+          </div>
+          <div class="logo-text">
+            <span class="logo-title">Flashpoint</span>
+            <span class="logo-subtitle">Fire & Safety</span>
+          </div>
+        </a>
+
+        <nav>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about us.html" class="nav-link">About Us</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="try - vr.html" class="nav-link">Try VR/MR Free</a></li>
+            <li><a href="premium vr experience.html" class="nav-link premium">Premium VR</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <div class="premium-badge" id="premiumBadge" style="display: none;">
+            <i class="fas fa-crown"></i>
+            <span>Premium</span>
+          </div>
+          <button class="logout-btn" id="logoutBtn" style="display: none;" onclick="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+          <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Premium Content -->
+  <main class="premium-content" id="premiumContent">
+
+    <!-- Hero Section -->
+    <section class="premium-hero">
+      <div class="container">
+        <div class="premium-badge-large">
+          <i class="fas fa-crown"></i>
+          <span>Exclusive Member Access</span>
+        </div>
+        <h1>Immersive <span>Premium VR</span> Fire Safety Training</h1>
+        <p>Experience photorealistic fire safety simulations with full headset integration, haptic feedback, and
+          advanced scenario modeling. Available exclusively to premium members.</p>
+
+        <div class="device-status">
+          <div class="device-item" id="headsetStatus">
+            <div class="device-icon">
+              <i class="fas fa-vr-cardboard"></i>
+            </div>
+            <div class="device-info">
+              <h4>VR Headset</h4>
+              <span id="headsetText">Searching for device...</span>
+            </div>
+          </div>
+          <div class="device-item" id="hapticStatus">
+            <div class="device-icon" style="background: var(--gradient-mr);">
+              <i class="fas fa-hand-paper"></i>
+            </div>
+            <div class="device-info">
+              <h4>Haptic Gloves</h4>
+              <span id="hapticText">Not connected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Premium Simulations</span>
+          <h2 class="section-title">Advanced Training Modules</h2>
+          <p class="section-subtitle">Full-scale immersive experiences with real-time physics, AI-driven scenarios, and
+            performance analytics. Compatible with Meta Quest Pro, HTC Vive Pro, and HoloLens 2.</p>
+        </div>
+
+        <div class="experiences-grid">
+          <!-- Experience 1 -->
+          <div class="experience-card" data-id="highrise" data-price="0">
+            <div class="experience-preview">
+              <div class="preview-grid"></div>
+              <div class="preview-content">
+                <div class="preview-icon">
+                  <i class="fas fa-building"></i>
+                </div>
+              </div>
+              <div class="experience-badge">
+                <i class="fas fa-star"></i> Most Popular
+              </div>
+            </div>
+            <div class="experience-info">
+              <h3><i class="fas fa-fire-extinguisher"></i> High-Rise Evacuation</h3>
+              <p>Full-scale high-rise building fire simulation with smoke dynamics, crowd behavior AI, and multi-floor
+                evacuation protocols. Features real-time stress monitoring.</p>
+              <div class="experience-meta">
+                <span class="meta-item"><i class="fas fa-clock"></i> 45 min</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="meta-item"><i class="fas fa-headset"></i> VR Required</span>
+              </div>
+              <button class="btn-launch-premium" onclick="launchVR('highrise')">
+                <i class="fas fa-play"></i> Launch Simulation
+              </button>
+            </div>
+          </div>
+
+          <!-- Experience 2 - PAID -->
+          <div class="experience-card locked" data-id="industrial" data-price="50">
+            <div class="experience-preview">
+              <div class="preview-grid"></div>
+              <div class="preview-content">
+                <div class="preview-icon" style="animation-delay: 0.5s;">
+                  <i class="fas fa-industry"></i>
+                </div>
+              </div>
+              <div class="experience-badge paid">
+                <i class="fas fa-coins"></i> 50 Tokens
+              </div>
+            </div>
+            <div class="experience-info">
+              <h3><i class="fas fa-hard-hat"></i> Industrial Facility</h3>
+              <p>Industrial fire scenarios including chemical fires, gas leaks, and machinery emergencies. Includes
+                proper PPE selection and hazardous material handling.</p>
+              <div class="experience-meta">
+                <span class="meta-item"><i class="fas fa-clock"></i> 60 min</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Expert</span>
+                <span class="meta-item"><i class="fas fa-graduation-cap"></i> Certificate</span>
+              </div>
+              <button class="btn-launch-premium locked" onclick="handleExperienceClick('industrial', 50)">
+                <i class="fas fa-lock"></i> Unlock for 50 Tokens
+              </button>
+            </div>
+          </div>
+
+          <!-- Experience 3 - PAID -->
+          <div class="experience-card locked" data-id="healthcare" data-price="75">
+            <div class="experience-preview">
+              <div class="preview-grid"></div>
+              <div class="preview-content">
+                <div class="preview-icon" style="animation-delay: 1s;">
+                  <i class="fas fa-hospital"></i>
+                </div>
+              </div>
+              <div class="experience-badge paid">
+                <i class="fas fa-coins"></i> 75 Tokens
+              </div>
+            </div>
+            <div class="experience-info">
+              <h3><i class="fas fa-procedures"></i> Healthcare Emergency</h3>
+              <p>Hospital fire evacuation with patient rescue scenarios. Manage oxygen equipment, bed-bound patients,
+                and critical care unit protocols under pressure.</p>
+              <div class="experience-meta">
+                <span class="meta-item"><i class="fas fa-clock"></i> 50 min</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Advanced</span>
+                <span class="meta-item"><i class="fas fa-users"></i> Team Mode</span>
+              </div>
+              <button class="btn-launch-premium locked" onclick="handleExperienceClick('healthcare', 75)">
+                <i class="fas fa-lock"></i> Unlock for 75 Tokens
+              </button>
+            </div>
+          </div>
+
+          <!-- Experience 4 - PAID -->
+          <div class="experience-card locked" data-id="aircraft" data-price="100">
+            <div class="experience-preview">
+              <div class="preview-grid"></div>
+              <div class="preview-content">
+                <div class="preview-icon" style="animation-delay: 1.5s;">
+                  <i class="fas fa-plane"></i>
+                </div>
+              </div>
+              <div class="experience-badge paid">
+                <i class="fas fa-coins"></i> 100 Tokens
+              </div>
+            </div>
+            <div class="experience-info">
+              <h3><i class="fas fa-parachute-box"></i> Aircraft Emergency</h3>
+              <p>Aviation fire safety training including cabin evacuation, slide deployment, and wing fire protocols.
+                Experience realistic aircraft environment physics.</p>
+              <div class="experience-meta">
+                <span class="meta-item"><i class="fas fa-clock"></i> 35 min</span>
+                <span class="meta-item"><i class="fas fa-signal"></i> Expert</span>
+                <span class="meta-item"><i class="fas fa-plane-departure"></i> Aviation</span>
+              </div>
+              <button class="btn-launch-premium locked" onclick="handleExperienceClick('aircraft', 100)">
+                <i class="fas fa-lock"></i> Unlock for 100 Tokens
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" style="background: rgba(20, 27, 61, 0.5);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Premium Features</span>
+          <h2 class="section-title">Why Go Premium?</h2>
+        </div>
+
+        <div class="features-grid-premium">
+          <div class="feature-card-premium">
+            <div class="feature-icon-premium">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Photorealistic</h3>
+            <p>Unreal Engine 5 graphics with ray tracing for true-to-life fire behavior and smoke physics</p>
+          </div>
+          <div class="feature-card-premium">
+            <div class="feature-icon-premium">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>AI Scenarios</h3>
+            <p>Dynamic fire spread algorithms and intelligent NPC behavior for unpredictable emergencies</p>
+          </div>
+          <div class="feature-card-premium">
+            <div class="feature-icon-premium">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Analytics</h3>
+            <p>Detailed performance reports, stress level monitoring, and skill progression tracking</p>
+          </div>
+          <div class="feature-card-premium">
+            <div class="feature-icon-premium">
+              <i class="fas fa-hand-sparkles"></i>
+            </div>
+            <h3>Haptic Feedback</h3>
+            <p>Feel heat, resistance, and vibration through compatible haptic gloves and suits</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">
+                <i class="fas fa-fire-alt"></i>
+              </div>
+              <div class="logo-text">
+                <span class="logo-title">Flashpoint</span>
+                <span class="logo-subtitle">Fire & Safety</span>
+              </div>
+            </a>
+            <p class="footer-description">
+              Leading fire protection specialists providing premium VR/MR training solutions for enterprise clients
+              across the UAE.
+            </p>
+          </div>
+          <div>
+            <h4 class="footer-title">Premium</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">My Account</a></li>
+              <li><a href="#" class="footer-link">Training History</a></li>
+              <li><a href="#" class="footer-link">Certificates</a></li>
+              <li><a href="#" class="footer-link">Support</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-title">Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Setup Guide</a></li>
+              <li><a href="#" class="footer-link">Device Compatibility</a></li>
+              <li><a href="#" class="footer-link">Best Practices</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="footer-title">Contact</h4>
+            <ul class="footer-links">
+              <li><a href="tel:0506742100" class="footer-link">050 674 2100</a></li>
+              <li><a href="mailto:premium@flashpoint.ae" class="footer-link">premium@flashpoint.ae</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Flashpoint Fire and Safety. Premium VR Experience. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Session Bar -->
+  <div class="session-bar" id="sessionBar" style="display: none;">
+    <div class="session-info">
+      <div class="session-avatar" id="sessionAvatar">P</div>
+      <div class="session-details">
+        <h4 id="sessionName">Premium Member</h4>
+        <span>Active Session</span>
+      </div>
+    </div>
+    <div class="session-timer">
+      <div class="timer-label">Session Time</div>
+      <div class="timer-value" id="sessionTimer">00:00:00</div>
+    </div>
+    <div class="wallet-display">
+      <div class="wallet-label">Wallet</div>
+      <div class="wallet-value" id="walletDisplay">
+        <i class="fas fa-coins"></i>
+        <span id="walletAmount">23000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VR Modal -->
+  <div class="vr-modal-overlay" id="vrModal">
+    <div class="vr-modal-container">
+      <div class="vr-modal-header">
+        <h3 class="vr-modal-title">
+          <i class="fas fa-crown"></i>
+          <span id="vrModalTitle">Premium VR Experience</span>
+        </h3>
+        <button class="vr-close" onclick="closeVR()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="vr-modal-content">
+        <div class="vr-loading" id="vrLoading">
+          <div class="vr-loading-spinner"></div>
+          <p>Initializing VR Environment...</p>
+        </div>
+        <div class="vr-canvas" id="vrCanvas">
+          <div class="vr-stereo">
+            <div class="vr-eye">
+              <span class="vr-eye-label">LEFT EYE</span>
+              <div class="vr-scene" id="leftEye"></div>
+            </div>
+            <div class="vr-eye">
+              <span class="vr-eye-label">RIGHT EYE</span>
+              <div class="vr-scene" id="rightEye"></div>
+            </div>
+          </div>
+          <div class="vr-controls-overlay">
+            <button class="vr-control-btn" onclick="resetView()">
+              <i class="fas fa-sync"></i> Reset View
+            </button>
+            <button class="vr-control-btn" onclick="toggleFullscreen()">
+              <i class="fas fa-expand"></i> Fullscreen
+            </button>
+            <button class="vr-control-btn"
+              style="background: rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.4); color: #ef4444;"
+              onclick="emergencyExit()">
+              <i class="fas fa-exclamation-triangle"></i> Emergency Exit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Session Management
+    let sessionStart = null;
+    let sessionTimer = null;
+    let currentUser = null;
+    let walletBalance = 23000; // Starting tokens updated to 23,000
+    let currentPurchase = { id: null, price: 0 };
+    let purchasedExperiences = [];
+
+    // Check existing session
+    window.addEventListener('load', () => {
+      const savedSession = localStorage.getItem('flashpoint_premium_session');
+      const savedWallet = localStorage.getItem('flashpoint_wallet');
+      const savedPurchases = localStorage.getItem('flashpoint_purchases');
+
+      if (savedSession) {
+        const session = JSON.parse(savedSession);
+        if (session.expires > Date.now()) {
+          if (savedWallet) walletBalance = parseInt(savedWallet);
+          if (savedPurchases) purchasedExperiences = JSON.parse(savedPurchases);
+          loginSuccess(session);
+        } else {
+          localStorage.removeItem('flashpoint_premium_session');
+        }
+      }
+    });
+
+    // Login Form
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      const password = document.getElementById('passwordInput').value;
+
+      // Demo credentials - In production, validate against server
+      if (email === 'premium@flashpoint.ae' && password === 'FlashPoint@2025') {
+        const session = {
+          email: email,
+          name: 'Premium Member',
+          start: Date.now(),
+          expires: Date.now() + (8 * 60 * 60 * 1000) // 8 hours
+        };
+        localStorage.setItem('flashpoint_premium_session', JSON.stringify(session));
+        localStorage.setItem('flashpoint_wallet', walletBalance);
+        loginSuccess(session);
+      } else {
+        document.getElementById('errorMessage').classList.add('show');
+        setTimeout(() => {
+          document.getElementById('errorMessage').classList.remove('show');
+        }, 3000);
+      }
+    });
+
+    function loginSuccess(session) {
+      currentUser = session;
+      document.getElementById('loginOverlay').classList.remove('active');
+      document.getElementById('premiumContent').classList.add('active');
+      document.getElementById('premiumBadge').style.display = 'flex';
+      document.getElementById('logoutBtn').style.display = 'block';
+      document.getElementById('sessionBar').style.display = 'flex';
+      document.getElementById('sessionName').textContent = session.name;
+      document.getElementById('sessionAvatar').textContent = session.name.charAt(0);
+
+      updateWalletDisplay();
+      updatePurchasedButtons();
+
+      sessionStart = new Date();
+      startSessionTimer();
+      simulateDeviceConnection();
+    }
+
+    function logout() {
+      localStorage.removeItem('flashpoint_premium_session');
+      localStorage.removeItem('flashpoint_wallet');
+      localStorage.removeItem('flashpoint_purchases');
+      location.reload();
+    }
+
+    function startSessionTimer() {
+      sessionTimer = setInterval(() => {
+        const now = new Date();
+        const diff = now - sessionStart;
+        const hours = Math.floor(diff / 3600000).toString().padStart(2, '0');
+        const minutes = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+        const seconds = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+        document.getElementById('sessionTimer').textContent = `${hours}:${minutes}:${seconds}`;
+      }, 1000);
+    }
+
+    // Wallet Functions
+    function updateWalletDisplay() {
+      document.getElementById('walletAmount').textContent = walletBalance;
+      document.getElementById('paymentWalletBalance').innerHTML = `<i class="fas fa-coins"></i><span>${walletBalance}</span>`;
+    }
+
+    function handleExperienceClick(id, price) {
+      if (purchasedExperiences.includes(id)) {
+        launchVR(id);
+      } else {
+        openPayment(id, price);
+      }
+    }
+
+    function openPayment(id, price) {
+      currentPurchase = { id, price };
+      document.getElementById('priceAmount').textContent = price;
+      document.getElementById('paymentOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      updatePaymentButton();
+    }
+
+    function closePayment() {
+      document.getElementById('paymentOverlay').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      document.getElementById('paymentSuccess').classList.remove('show');
+      currentPurchase = { id: null, price: 0 };
+    }
+
+    function updatePaymentButton() {
+      const btn = document.getElementById('confirmPaymentBtn');
+      const addFundsBtn = document.getElementById('addFundsBtn');
+
+      if (walletBalance >= currentPurchase.price) {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-check"></i> Confirm Purchase';
+        btn.classList.remove('insufficient');
+        addFundsBtn.style.display = 'none';
+      } else {
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-times"></i> Insufficient Funds';
+        btn.classList.add('insufficient');
+        addFundsBtn.style.display = 'flex';
+      }
+    }
+
+    function processPayment() {
+      if (walletBalance >= currentPurchase.price) {
+        walletBalance -= currentPurchase.price;
+        purchasedExperiences.push(currentPurchase.id);
+
+        localStorage.setItem('flashpoint_wallet', walletBalance);
+        localStorage.setItem('flashpoint_purchases', JSON.stringify(purchasedExperiences));
+
+        updateWalletDisplay();
+        updatePurchasedButtons();
+
+        document.getElementById('paymentSuccess').classList.add('show');
+
+        setTimeout(() => {
+          closePayment();
+          launchVR(currentPurchase.id);
+        }, 1500);
+      }
+    }
+
+    function addFunds() {
+      walletBalance += 100;
+      localStorage.setItem('flashpoint_wallet', walletBalance);
+      updateWalletDisplay();
+      updatePaymentButton();
+
+      // Visual feedback
+      const btn = document.getElementById('addFundsBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i> Added 100 Tokens!';
+      btn.style.background = 'rgba(16, 185, 129, 0.2)';
+      btn.style.borderColor = 'var(--mr-green)';
+      btn.style.color = 'var(--mr-green)';
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
+    }
+
+    function updatePurchasedButtons() {
+      purchasedExperiences.forEach(id => {
+        const card = document.querySelector(`[data-id="${id}"]`);
+        if (card) {
+          card.classList.remove('locked');
+          const badge = card.querySelector('.experience-badge');
+          if (badge) {
+            badge.classList.remove('paid');
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Owned';
+            badge.style.background = 'rgba(16, 185, 129, 0.2)';
+            badge.style.borderColor = 'var(--mr-green)';
+            badge.style.color = 'var(--mr-green)';
+          }
+          const btn = card.querySelector('.btn-launch-premium');
+          if (btn) {
+            btn.classList.remove('locked');
+            btn.innerHTML = '<i class="fas fa-play"></i> Launch Simulation';
+            btn.onclick = () => launchVR(id);
+          }
+        }
+      });
+    }
+
+    // Device Simulation
+    function simulateDeviceConnection() {
+      setTimeout(() => {
+        document.getElementById('headsetStatus').classList.add('connected');
+        document.getElementById('headsetText').textContent = 'Meta Quest Pro Connected';
+        document.getElementById('headsetText').style.color = 'var(--mr-green)';
+      }, 2000);
+
+      setTimeout(() => {
+        document.getElementById('hapticStatus').classList.add('connected');
+        document.getElementById('hapticText').textContent = 'Haptic Gloves Active';
+        document.getElementById('hapticText').style.color = 'var(--mr-green)';
+      }, 4000);
+    }
+
+    // VR Launch
+    function launchVR(type) {
+      const titles = {
+        highrise: 'High-Rise Evacuation Simulation',
+        industrial: 'Industrial Facility Training',
+        healthcare: 'Healthcare Emergency Protocol',
+        aircraft: 'Aircraft Emergency Evacuation'
+      };
+
+      document.getElementById('vrModalTitle').textContent = titles[type];
+      document.getElementById('vrModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Simulate loading
+      setTimeout(() => {
+        document.getElementById('vrLoading').style.display = 'none';
+        initializeVRScene(type);
+      }, 3000);
+    }
+
+    function closeVR() {
+      document.getElementById('vrModal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+      document.getElementById('vrLoading').style.display = 'flex';
+    }
+
+    function initializeVRScene(type) {
+      const scenes = {
+        highrise: createHighriseScene(),
+        industrial: createIndustrialScene(),
+        healthcare: createHealthcareScene(),
+        aircraft: createAircraftScene()
+      };
+
+      document.getElementById('leftEye').innerHTML = scenes[type];
+      document.getElementById('rightEye').innerHTML = scenes[type];
+    }
+
+    function createHighriseScene() {
+      return `
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #1a1f4b 0%, #0a0e27 100%);">
+          <div style="position: absolute; bottom: 0; width: 100%; height: 40%; background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%); transform: perspective(500px) rotateX(60deg); transform-origin: bottom;"></div>
+          <div style="position: absolute; top: 20%; left: 20%; width: 60%; height: 60%; background: rgba(255,59,59,0.1); border: 2px solid rgba(255,59,59,0.3); border-radius: 20px; display: flex; align-items: center; justify-content: center; animation: pulse 2s infinite;">
+            <i class="fas fa-fire" style="font-size: 4rem; color: var(--fire-red);"></i>
+          </div>
+          <div style="position: absolute; top: 10%; left: 10%; color: var(--accent-gold); font-size: 1.2rem;">
+            <i class="fas fa-arrow-down"></i> Emergency Exit
+          </div>
+        </div>
+      `;
+    }
+
+    function createIndustrialScene() {
+      return `
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #2d1b1b 0%, #1a0f0f 100%);">
+          <div style="position: absolute; top: 30%; left: 30%; width: 40%; height: 40%; background: radial-gradient(circle, rgba(255,100,0,0.6) 0%, transparent 70%); animation: flicker 0.5s infinite alternate;"></div>
+          <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); font-size: 3rem; color: var(--gray-200);">
+            <i class="fas fa-industry"></i>
+          </div>
+        </div>
+      `;
+    }
+
+    function createHealthcareScene() {
+      return `
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #f0f4f8 0%, #cbd5e0 100%);">
+          <div style="position: absolute; top: 20%; left: 20%; width: 60px; height: 60px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
+            <i class="fas fa-plus" style="color: #e53e3e; font-size: 1.5rem;"></i>
+          </div>
+          <div style="position: absolute; bottom: 30%; left: 30%; width: 100px; height: 60px; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+        </div>
+      `;
+    }
+
+    function createAircraftScene() {
+      return `
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #87ceeb 0%, #e0f6ff 100%);">
+          <div style="position: absolute; top: 40%; left: 50%; transform: translateX(-50%); width: 200px; height: 100px; background: white; border-radius: 100px 100px 0 0; box-shadow: 0 10px 30px rgba(0,0,0,0.2);"></div>
+          <div style="position: absolute; bottom: 20%; left: 50%; transform: translateX(-50%); color: var(--fire-red); font-size: 2rem; animation: pulse 1s infinite;">
+            <i class="fas fa-exclamation-triangle"></i> EXIT
+          </div>
+        </div>
+      `;
+    }
+
+    function resetView() {
+      alert('View reset to initial position');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    function emergencyExit() {
+      if (confirm('Emergency Exit: This will immediately end the simulation. Continue?')) {
+        closeVR();
+      }
+    }
+
+    // Mobile Menu
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navMenu').classList.toggle('active');
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('paymentOverlay').classList.contains('active')) {
+          closePayment();
+        } else if (document.getElementById('vrModal').classList.contains('active')) {
+          closeVR();
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
